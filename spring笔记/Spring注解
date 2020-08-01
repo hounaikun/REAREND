@@ -1,0 +1,801 @@
+1.xml式：
+	配置文件beans.xml：
+	<?xml version="1.0" encoding="UTF-8"?>
+	<beans xmlns="http://www.springframework.org/schema/beans"
+	       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	       xmlns:context="http://www.springframework.org/schema/context"
+	       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	        http://www.springframework.org/schema/beans/spring-beans.xsd
+	        http://www.springframework.org/schema/context
+	        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	    <!-- 包扫描、只要是标注了@Controller、@Service、@Repository、@Component   -->
+	    <context:component-scan base-package="org.example"></context:component-scan>
+
+	    <bean id="person1" class="org.example.bean.Person">
+	        <property name="name" value="张三"></property>
+	        <property name="age" value="15"></property>
+	    </bean>
+	</beans>
+
+	main方法获取bean：
+	/*	
+		ClassPathXmlApplicationContext[只能读放在web-info/classes目录下的配置文件]和FileSystemXmlApplicationContext的区别
+	    ClassPathXmlApplicationContext，前缀是不需要的，默认就是指项目的classpath路径下面；如果要使用绝对路径，需要加上file:前缀表示这是绝对路径。
+	    对于FileSystemXmlApplicationContext，默认表示的是两种：
+	    1).没有盘符的是项目工作路径，即项目的根目录；
+	    2).有盘符表示的是文件绝对路径。
+	    如果要使用classpath路径，需要前缀classpath:
+    */
+    ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+    Person person1 = applicationContext.getBean("person1", Person.class);
+    System.out.println(person1);
+
+2.注解式：
+	配置类：
+	@Configuration  //告诉Spring 这是一个配置类
+	@ComponentScan(value = "org.example",includeFilters = {
+        @ComponentScan.Filter(type = FilterType.ANNOTATION,classes = {Controller.class}),
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,classes = {BookService.class}),
+        @ComponentScan.Filter(type = FilterType.CUSTOM,classes = {MyFilter.class})
+	},useDefaultFilters = false)
+	//@ComponentScan value:指定要扫描的包，默认扫描的类型（@Controller、@Service、@Repository、@Component），其中扫描后就加到容器中
+    //excludeFilters = Filter[] :指定哪些组件被排除扫描外
+    //includeFilters = Filter[] :指定哪些组件被包含扫描中
+    //使用自定义规则时，需要设置默认过滤为false：useDefaultFilters = false,默认扫描所有包，false扫描自定义的包
+    //FilterType.ANNOTATION 按照注解
+    //FilterType.ASSIGNABLE_TYPE 按照给定的类型
+    //FilterType.CUSTOM 自定义
+    //**注意：**如果不加过滤条件，默认扫描（@Controller、@Service、@Repository、@Component），如果加过滤条件，按照过滤条件扫描。
+    @Import({Color.class, MyImportSelector.class, MyImportBeanDefinitionRegistrar.class})
+	//导入组件，id默认是组件的全类名
+	public class MainConfig {
+
+	    //给容器中注册一个Bean；类型为返回值的类型，id默认是 用方法名作为id
+	    @Bean(name = "person1")
+	    //prototype : 多实例  ,ioc容器启动并不会调用方法创建对象放在容器中，每次获取的时候才会调用方法创建对象。
+	    //singleton : 单实例  ,默认，ioc容器启动会调用方法创建对象放到ioc容器中，以后每次获取都是直接从容器中拿。
+	    @Scope("singleton")
+	    /*
+	     * 懒加载：
+	     *   单实例bean：默认在容器启动的时候创建对象；
+	     *   懒加载：容器启动不创建对象，第一次使用（获取）Bean创建对象，并初始化。
+	     * */
+	    @Lazy
+	    public Person person(){
+	        return new Person("李四",18);
+	    }
+	    
+	    /*
+	    * @Conditional : 按照一定条件进行判断，满足条件给容器注册Bean
+	    * 如果系统是windows，给容器中注册("bill")
+	    * 如果系统是linux系统，给容器中注册("linux")
+	    * 如果此注解放在类上面，满足此条件，这个类中配置的所有bean注册才生效；
+	    * */
+
+	    @Bean(name = "bill")
+	    @Conditional(WindowsCondition.class)
+	    public Person person1(){
+	        return new Person("比尔盖茨",52);
+	    }
+	    @Bean(name = "linus")
+	    @Conditional(LinuxCondition.class)
+	    public Person person2(){
+	        return new Person("利纳斯",48);
+	    }
+
+	    /**
+	     * 给容器中注册组件：
+	     * 1.包扫描+组件标注注解（@Controller/@Service/@Repository/@Component）[自己写的]
+	     * 2.@Bean[导入第三方包里面的组件]
+	     * 3.@Import[快速给容器中导入一个组件]
+	     *      3.1 @Import(要导入到容器中的组件)；容器中就会自动注册这个组件，id默认是全类名。
+	     *      3.2 ImportSelector:返回需要导入组件的全类名数组；
+	     *		3.3 ImportBeanDefinitionRegistrar:手动注册Bean到容器中
+	     * 4.使用Spring提供的FactoryBean（工厂Bean）
+     	 *      4.1 默认获取到的是工厂bean 调用getObject创建的对象
+     	 *      4.2 要获取工厂Bean本身，我们需要给 通过id获取Bean的方法 的参数前面加一个&标识
+	     */
+
+	    @Bean(name="colorFactoryBean")
+	    public ColorFactoryBean colorFactoryBean(){
+	        return new ColorFactoryBean();
+	    }
+	}
+
+	自定义FilterType.CUSTOM
+	public class MyFilter implements TypeFilter {
+	    //metadataReader:读取到的当前正在扫描的类的信息
+	    //metadataReaderFactory:可以获取其他任何类的信息
+	    @Override
+	    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
+	        //获取当前类的注解信息
+	        AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();
+
+	        //获取当前正在扫描的类的类信息
+	        ClassMetadata classMetadata = metadataReader.getClassMetadata();
+
+	        //获取当前类的资源（类路径）
+	        Resource resource = metadataReader.getResource();
+
+	        String className = classMetadata.getClassName();
+	        System.out.println("---->"+className);
+	        if(className.contains("er")){
+	            return true;
+	        }
+	        return false;
+	    }
+	}
+
+	自定义Condition
+	//判断是否是linux系统
+	public class LinuxCondition implements Condition {
+	    /*
+	        ConditionContext:判断条件能使用的上下文（环境）
+	        AnnotatedTypeMetadata：注释信息
+	     */
+	    @Override
+	    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+	        //1.能获取到ioc使用的beanFactory
+	        ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
+	        //2.能获取到类加载器
+	        ClassLoader classLoader = context.getClassLoader();
+	        //3.能获取环境信息
+	        Environment environment = context.getEnvironment();
+	        //4.获取bean定义的注册类
+	        BeanDefinitionRegistry registry = context.getRegistry();
+
+	        //判断容器中bean的注册情况，也可以给容器中注册bean
+	        boolean defintion = registry.containsBeanDefinition("lisi");
+
+
+	        String property = environment.getProperty("os.name");
+	        if(property.toLowerCase().equals("linux")){
+	            return true;
+	        }
+	        return false;
+	    }
+	}
+	//判断是否是liunx系统
+	public class WindowsCondition implements Condition {
+	    @Override
+	    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+	        Environment environment = context.getEnvironment();
+	        String property = environment.getProperty("os.name");
+	        if(property.toLowerCase().contains("windows")){
+	            return true;
+	        }
+	        return false;
+	    }
+	}
+
+	自定义ImportSelector
+	//自定义逻辑返回需要导入的组件
+	public class MyImportSelector implements ImportSelector {
+	    //返回值，就是导入到容器中的组件全类名
+	    //AnnotationMetadata：当前标注@Import注解类的所有注解信息
+	    @Override
+	    public String[] selectImports(AnnotationMetadata importingClassMetadata) {
+
+	        //不能返回null，否则就会报空指针异常
+	        return new String[]{"org.example.bean.Red"};
+	    }
+	}
+	自定义ImportBeanDefinitionRegistrar
+	public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar {
+	    /**
+	     * AnnotationMetadata:当前类的注解信息
+	     * BeanDefinitionRegistry：BeanDefinition注册类；把所有需要添加到容器中的Bean；
+	     *                          BeanDefinitionRegistry.registerBeanDefinition()手工注册进来
+	     * @param importingClassMetadata
+	     * @param registry
+	     */
+	    @Override
+	    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+
+	        boolean redDefinition = registry.containsBeanDefinition("red");
+	        //如果有BeanName 为red的Bean，那么就注册Blue
+	        if(redDefinition){
+	            //指定Bean定义信息；（Bean的类型，Bean。。。)
+	            RootBeanDefinition rootBeanDefinition = new RootBeanDefinition(Blue.class);
+	            //指定bean名
+	            registry.registerBeanDefinition("blue",rootBeanDefinition);
+	        }
+	    }
+	}
+
+	//自定义FactoryBean
+	//创建一个Spring定义的FactoryBean
+	public class ColorFactoryBean implements FactoryBean<Color> {
+	    //返回一个Color对象， 这个对象会添加到容器中
+	    @Override
+	    public Color getObject() throws Exception {
+	        return new Color();
+	    }
+
+	    @Override
+	    public Class<?> getObjectType() {
+	        return Color.class;
+	    }
+
+	    //如果返回true，是单实例
+	    @Override
+	    public boolean isSingleton() {
+	        return false;
+	    }
+	}
+
+
+	main方法获取：
+	//加载配置类，获取IOC容器
+    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
+    String[] personNames = applicationContext.getBeanNamesForType(Person.class);
+    for(String name : personNames){
+        System.out.println(name);
+    }
+    Person person1 = applicationContext.getBean("person1", Person.class);
+    System.out.println(person1);
+
+    //查看此容器中有哪些bean
+    String[] definitionNames = applicationContext.getBeanDefinitionNames();
+    for(String beanName : definitionNames){
+        System.out.println(beanName);
+    }
+
+    test01方法：
+    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
+    //查看在容器中有多少Person类的Bean
+    String[] beanNamesForType = applicationContext.getBeanNamesForType(Person.class);
+    for(String beanName : beanNamesForType){
+        System.out.println(beanName);
+    }
+
+    //获得容器中所有Person类的Bean
+    Map<String, Person> persons = applicationContext.getBeansOfType(Person.class);
+    for(String p : persons.keySet()){
+        System.out.println(persons.get(p));
+    }
+
+    //获取当前IOC容器的环境
+    Environment environment = applicationContext.getEnvironment();
+    //动态获取当前操作系统 ： Windows 10
+    String osName = environment.getProperty("os.name");
+    System.out.println(osName);
+
+    testFactoryBean方法：
+    AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
+    //工厂Bean获取的是调用getObject创建的对象
+    Object colorFactoryBean = applicationContext.getBean("colorFactoryBean");
+    System.out.println(colorFactoryBean.getClass()); //class org.example.bean.Color
+
+    Object colorFactoryBean2 = applicationContext.getBean("&colorFactoryBean");
+    System.out.println(colorFactoryBean2.getClass()); //class org.example.Factory.ColorFactoryBean
+
+    bean的生命周期：
+    MainConfigOfLifeCycle类：
+	/**
+	 * @description:
+	 * <p>Bean的生命周期：
+	 *      bean的创建------初始化------销毁的过程
+	 *    容器管理bean的生命周期；
+	 *    我们可以自定义初始化和销毁方法；容器在bean进行到当前生命周期的时候来调用我们自定义的初始化和销毁方法
+	 *
+	 *    构造（对象创建）：
+	 *          单实例：在容器启动的时候创建对象
+	 *          多实例：在每次获取的时候创建对象
+	 *    BeanPostProcessor.postProcessBeforeInitialization
+ 	 *    初始化：
+ 	 *          对象创建完成，并赋值完成后，调用初始化方法。。。
+ 	 *    BeanPostProcessor.postProcessAfterInitialization
+	 *    销毁：
+	 *          单实例：容器关闭的时候
+	 *          多实例：容器不会管理这个bean；容器不会调用销毁方法；
+	 *
+	 *     源码：	
+	 *
+	 *     遍历得到容器中所有BeanPostProcessor；挨个执行beforeInitialization，
+	 *     一旦返回null，跳出for循环，不会执行后面的BeanPostProcessor.postProcessorsBeforeInitialization
+	 *
+	 *      BeanPostProcessor原理：
+	 *      populateBean（beanName,mbd,instanceWrapper）;给bean进行属性赋值
+	 *      initializeBean
+	 *      {
+	 *          applyBeanPostProcessorsBeforeInitialization(wrappedBean,beanName)
+	 *          invokeInitMethods(beanName,wrappedBean,mbd);执行自定义初始化
+	 *          applyBeanPostProcessorsAfterInitialization(wrappedBean,beanName)
+	 *     }
+	 *
+	 *
+	 *
+	 *    1.指定初始化和销毁方法：
+	 *          指定 init-method=""和destroy-method=""
+	 *    2.通过让Bean实现InitializingBean（定义初始化逻辑），
+	 *          DisposableBean（定义销毁逻辑）
+	 *    3.可以用JSR250；
+ 	 *          @PostConstruct：在bean创建完成并且属性赋值完成；来执行初始化方法
+ 	 *          @PreDestroy：在容器销毁Bean之前同通知我们进行清理工作
+ 	 *    4.BeanPostProcessor【interface】：bean的后置处理器；
+ 	 *          在Bean初始化前后进行一些处理工作；
+ 	 *          postProcessBeforeInitialization：在初始化之前工作
+ 	 *          postProcessAfterInitialization：在初始化之后工作
+ 	 *
+ 	 *
+ 	 *    Spring底层对BeanPostProcessor的使用：
+ 	 *      bean赋值，注入其他组件，@Autowired,生命周期注解功能，@Async，xxx BeanPostProcessor；
+	 * </p>
+	 * @author: hounaikun
+	 * @create: 2020-07-23 16:41
+	 **/
+	@ComponentScan("org.example.bean")
+	@Configuration
+	public class MainConfigOfLifeCycle {
+	    @Bean(name="car",initMethod = "init",destroyMethod = "destroy")
+	    public Car car(){
+	        return new Car();
+	    }
+	}
+
+	Bean类：
+	Car类
+	/**
+	 * @description: <p>车</p>
+	 * @author: hounaikun
+	 * @create: 2020-07-23 16:48
+	 **/
+	public class Car {
+	    public Car() {
+	        System.out.println("Car Constructor。。。");
+	    }
+	    public void init(){
+	        System.out.println("Car init。。。");
+	    }
+	    public void destroy(){
+	        System.out.println("Car destroy。。。");
+	    }
+	}
+	Cat类
+	/**
+	 * @description: <p>猫</p>
+	 * @author: hounaikun
+	 * @create: 2020-07-23 19:28
+	 **/
+	@Component
+	public class Cat implements InitializingBean, DisposableBean {
+
+	    public Cat() {
+	        System.out.println("Cat Constructor。。。");
+	    }
+
+
+	    @Override
+	    public void destroy() throws Exception {
+	        System.out.println("Cat Destroy。。。");
+	    }
+
+	    @Override
+	    public void afterPropertiesSet() throws Exception {
+	        System.out.println("Cat Init。。。");
+	    }
+	}
+	Dog类：
+	/**
+	 * @description: <p>狗</p>
+	 * @author: hounaikun
+	 * @create: 2020-07-23 19:42
+	 **/
+	@Component
+	public class Dog {
+	    public Dog() {
+	        System.out.println("Dog Constructor。。。");
+	    }
+
+	    //对象创建并赋值之后调用
+	    @PostConstruct
+	    public void init(){
+	        System.out.println("Dog init。。。");
+	    }
+
+	    //容器移除对象之前
+	    @PreDestroy
+	    public void destroy(){
+	        System.out.println("Dog destroy。。。");
+	    }
+	}
+	MyBeanPostProcessor：
+	/**
+	 * @description:
+	 * <p>
+	 *     后置处理器：初始化前后进行处理工作
+	 *     将后置处理器加入到容器中
+	 * </p>
+	 * @author: hounaikun
+	 * @create: 2020-07-23 20:05
+	 **/
+	@Component
+	public class MyBeanPostProcessor implements BeanPostProcessor {
+	    @Override
+	    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+	        System.out.println("postProcessBeforeInitialization。。。" + beanName+"==>"+bean);
+	        return bean;
+	    }
+
+	    @Override
+	    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+	        System.out.println("postProcessAfterInitialization。。。" + beanName+"==>"+bean);
+	        return bean;
+	    }
+	}
+
+	测试类：
+	@Test
+    public void testLifeCycle(){
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfLifeCycle.class);
+        System.out.println("IOC容器创建完成。。。");
+        //关闭容器
+        applicationContext.close();
+    }
+
+    属性赋值
+    配置类：
+    /**
+	 * @description: 
+	 * <p>
+	 * 		属性赋值配置文件
+	 *		@Value 可以标注在方法	属性和参数上。
+	 * </p>
+	 * @author: hounaikun
+	 * @create: 2020-07-24 15:53
+	 **/
+
+	//使用@PropertySource读取外部配置文件中的k/v保存到运行的环境变量中,
+    //加载完外部文件的配置文件以后使用${}取出配置文件的值
+	@PropertySource("classpath:/person.properties")
+	@Configuration
+	public class 	 {
+
+	    @Bean
+	    public Person person(){
+	        return new Person();
+	    }
+	}
+	Bean类：
+	/**
+	 * @description: <p>测试类</p>
+	 * @author: hounaikun
+	 * @create: 2020-07-19 20:51
+	 **/
+	public class Person {
+	    //使用@Value赋值；
+	    //1.基本数值
+	    @Value("张三")
+	    private String name;
+	    //2.可以写SpEL；#{}
+	    @Value("#{20-15}")
+	    private Integer age;
+	    //3.可以写${}；取出配置文件中的值{在运行环境变量里面的值}
+	    @Value("${person.nickName}")//很奇怪问什么读取不到？？？待解决
+	    private String nickName;
+
+	    public String getNickName() {
+	        return nickName;
+	    }
+
+	    public void setNickName(String nickName) {
+	        this.nickName = nickName;
+	    }
+
+	    public Person() {
+	    }
+
+	    public Person(String name, Integer age) {
+
+	        this.name = name;
+	        this.age = age;
+	    }
+
+	    public String getName() {
+	        return name;
+	    }
+
+	    public void setName(String name) {
+	        this.name = name;
+	    }
+
+	    public Integer getAge() {
+	        return age;
+	    }
+
+	    public void setAge(Integer age) {
+	        this.age = age;
+	    }
+
+	    @Override
+	    public String toString() {
+	        return "Person{" +
+	                "name='" + name + '\'' +
+	                ", age=" + age +
+	                ", nickName='" + nickName + '\'' +
+	                '}';
+	    }
+	}
+	配置文件 person.properties：
+	person.nickName=xiaosan
+	测试类：
+	@Test
+    public void testPropertyValues(){
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfPropertyValues.class);
+        Person person = applicationContext.getBean("person", Person.class);
+        System.out.println(person);
+
+        //此种方式也可以读取配置文件
+        ConfigurableEnvironment environment = applicationContext.getEnvironment();
+        String property = environment.getProperty("person.nickName");//存在中文乱码问题？？？待解决
+        System.out.println(property);
+    }
+
+    自动装配：
+    MainConfigOfAutowired配置文件
+    /**
+	 * @description:
+	 * <p>
+	 *     自动装配:
+	 *          Spring利用依赖注入（DI），完成对IOC容器中各个组件的依赖关系赋值。
+	 *
+	 *          1.@Autowired：自动注入【Spring定义】：
+	 *              1.1 默认优先按照类型去容器中找对应的组件：类似这样applicationContext.getBean(BookDao.class);如果
+	 *                  只找到一个就直接赋值。
+	 *              1.2 如果找到多个相同类型的组件，再将属性的名称作为组件的id去容器中查找：类似
+	 *                  applicationContext.getBean("bookDao");
+	 *                      public class BookService {
+	 *                          @Autowired
+	 *                          private BookDao bookDao;
+	 *                      }
+	 *              1.3 @Qualifier("bookDao"):使用@Qualifier指定默认的组件id，而不是使用属性名。
+	 *              1.4 自动装配默认一定要将属性赋值好，也就是ioc容器中一定要有注入的Bean，否则报错。可以使用
+	 *                  @Autowired(required=false)作为避免报错。
+	 *              1.5 @Primary：让Spring进行自动装配的时候，默认使用首选的Bean,放在@Bean上下即可，用此注解不能使用
+	 *                  @Qualifier。
+	 *
+	 *           2. Spring 还支持使用@Resource（JSR250） 和 @Inject（JSR330）【JAVA规范注解】
+	 *
+	 *              2.1 @Resource：
+	 *                  可以和@Autowired一样实现自动装配功能；默认按照组件名称进行装配的；
+	 *                  没有能支持@Primary功能，没有支持@Autowired(required=false)的功能。
+	 *              2.2 @Inject：
+	 *                  需要导入javax.inject的包，和Autowired的功能一样，没有支持@Autowired(required=false)的功能。
+	 *
+	 *          AutowiredAnnotationBeanBeanPostProcessor:解析完成自动装配功能
+	 *
+	 *     @Autowired标的位置：构造器、参数、方法、属性：都是从容器中获取参数组件的值
+	 *          1.标注在方法位置：@Bean+方法参数；参数从容器中获取；默认不写@Autowired，效果是一样的。
+	 *              //标注在方法上，Spring容器创建当前对象，就会调用此方法，完成赋值，
+	 *              //方法使用的参数，自定义类型的值从ioc容器中获取
+	 *              @Autowired
+	 *              public void setCat(Cat cat) {
+	 *                  this.cat = cat;
+	 *              } 或者
+	 *              public void setCat(@Autowired Cat cat) {
+	 *                  this.cat = cat;
+	 *              }
+	 *          2.标注在构造器位置：如果组件只有一个有参构造器，这个有参构造器的@Autowired可以省略，
+	 *                              参数位置的组件还是可以自动从容器中获取
+	 *              ** 默认加在ioc容器中的组件，容器启动会调用无参构造器创建对象，进行赋值操作后初始化。
+	 *              //构造器要用的组件，都是从容器中获取的
+	 *              @Autowired
+	 *              public Boos(Cat cat) {
+	 *                  this.cat = cat;
+	 *              }或者
+	 *              public Boos(@Autowired Cat cat) {
+	 *                  this.cat = cat;
+	 *              }
+	 *           3.方法参数
+	 *
+	 *     自定义组件想要使用Spring容器底层的一些组件（ApplicationContext，BeanFactory，XXX），
+     *          自定义组件实现xxxAware；在创建对象的时候，会调用接口规定的方法注入相关组件；Aware
+	 *
+	 * </p>
+	 * @author: hounaikun
+	 * @create: 2020-07-24 17:03
+	 **/
+	@Configuration
+	public class MainConfigOfAutowired {
+
+	    @Bean
+	    public Cat cat(){
+	        return new Cat();
+	    }
+	    //@Bean创建对象的时候，方法的参数的值从容器中获取
+	    @Bean
+	    public Boos boos(Cat cat){
+	        Boos boos = new Boos();
+	        boos.setCat(cat);
+	        return boos;
+	    }
+	}
+	ApplicationContextAware类：
+	public class Green implements ApplicationContextAware {
+	    private ApplicationContext applicationContext;
+	    @Override
+	    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+	        this.applicationContext = applicationContext;
+	    }
+
+	    public String print() {
+	        return "Green{" +
+	                "applicationContext=" + applicationContext +
+	                '}';
+	    }
+	}
+
+	profile：
+	MainConfigOfProfile配置文件
+	/**
+	 * @description:
+	 * <p>
+	 *      Profile:
+	 *          Spring为我们提供的可以根据当前环境，动态的激活和切换一系列组件的功能
+	 *
+	 *      开发环境、测试环境、生产环境；
+	 *      数据源：（/A）（/B）（/C）
+	 *
+	 *      @Profile：指定组件在哪个环境的情况下才能被注册到容器中，不指定，任何环境下都能注册这个组件
+	 *      1.加了环境标识的bean，只有这个环境被激活的时候才能注册到容器中，默认时default环境
+	 *
+	 *      2.写在配置类上，只有是指定的环境的时候，整个配置类里面的所有配置才能开始生效
+	 *
+	 *      3.没有标注环境标识的bean在任何环境都是加载的；
+	 * </p>
+	 * @author: hounaikun
+	 * @create: 2020-07-25 10:40
+	 **/
+	@Configuration
+	public class MainConfigOfProfile {
+
+	    //默认
+	    @Profile("default")
+	    @Bean
+	    public Person person(){
+	        return new Person();
+	    }
+	    @Profile("test")
+	    @Bean
+	    public Car car(){
+	        return new Car();
+	    }
+	    @Profile("dev")
+	    @Bean
+	    public Red red(){
+	        return new Red();
+	    }
+	    @Profile("prod")
+	    @Bean
+	    public Green green(){
+	        return new Green();
+	    }
+	}
+	测试方法：
+	@Test
+    public void testProfile(){
+        /**
+         * 修改环境
+         * 1.使用命令行动态参数：右键 -- 点击Edit `testProfile` --
+         *                      修改VM options参数为：-Dspring.profiles.active=test
+         * 2.使用ioc容器设参：   2.1 必须使用无参构造器
+         *                      AnnotationConfigApplicationContext applicationContext =
+         *                          new AnnotationConfigApplicationContext();
+         *                      2.2 设置需要激活的环境
+         *                      applicationContext.getEnvironment().setActiveProfiles("test","dev");
+         *                      2.3 注册主配置类
+         *                      applicationContext.register(MainConfigOfProfile.class);
+         *                      2.4 启动刷新容器
+         *                      applicationContext.refresh();
+         */
+
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfProfile.class);
+        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
+        for(String name : beanDefinitionNames){
+            System.out.println(name);
+        }
+    }
+
+    AOP:
+    配置类：
+    /**
+	 * @description:
+	 * <p>
+	 *     AOP【动态代理】:
+	 *          指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式
+	 *     1.导入aop模块：（spring-aspects) pom导入
+	 *     2.定义一个业务逻辑类（MathCalculator）;在业务逻辑运行的时候将日志进行打印（方法之前，方法运行结束，方法出现异常。。。）
+	 *     3.定义一个日志切面类（LogAspects）；切面类里面的方法需要动态感知MathCalculator.div运行到哪里了然后执行
+	 *                 通知方法：
+	 *                          前置通知(@Before)：logStart(),在目标方法运行之前运行
+	 *                          后置通知(@After)：logEnd(),在目标方法运行结束之后运行(无论正常结束还是异常结束都会执行)
+	 *                          返回通知(@AfterReturning)：logReturn(),在目标方法正常返回之后运行
+	 *                          异常通知(@AfterThrowing)：logException(),在目标方法出现异常之后运行
+	 *                          环绕通知(@Around)：动态代理，手动推进目标方法执行
+	 *     4.给切面类的目标方法标注何时何地运行（通知注解）
+	 *     5.将切面类和业务逻辑类（目标方法所在类）都加入到容器中；
+	 *     6.必须告诉Spring哪个是切面类（给切面类加一个注解@Aspect）
+	 *     7.**  需要给配置类中加@EnableAspectJAutoProxy【启动基于注解的aop模式】
+	 *                  在Spring中很多的@EnableXXX，一般都是开启某项配置。
+	 *
+	 *
+	 *     三步：
+	 *          1.将业务逻辑组件和切面类都加入到容器中；告诉Spring哪个是切面类（@Aspect）
+	 *          2.在切面类上的每一个通知方法上标注通知注解，告诉Spring何时何地运行（切入点表达式）
+	 *          3.开启基于注解的aop模式：@EnableAspectJAutoProxy
+	 * </p>
+	 * @author: hounaikun
+	 * @create: 2020-07-29 21:00
+	 **/
+	@EnableAspectJAutoProxy
+	@Configuration
+	public class MainConfigOfAOP {
+
+	    @Bean
+	    public MathCalculator calculator(){
+	        return new MathCalculator();
+	    }
+	    @Bean
+	    public LogAspects logAspects(){
+	        return new LogAspects();
+	    }
+	}
+
+	目标类：
+	public class MathCalculator {
+	    public int div(int a,int b){
+	        System.out.println("MathCalculator.div 。。。。。。。。。。。");
+	        return a / b;
+	    }
+	}
+
+	切面类：
+	/**
+	 * @description: <p>
+	 *     切面类
+	 *     @Aspect：告诉Spring当前类是一个切面类
+	 * </p>
+	 * @author: hounaikun
+	 * @create: 2020-07-29 21:12
+	 **/
+	@Aspect
+	public class LogAspects {
+
+	    //抽取公共的切入点表达式
+	    //1.本类引用 参照下文
+	    //2.其他切面类引用 @Before("org.example.aop.LogAspects.pointCut()") 使用全限定名称
+	    @Pointcut("execution(public int org.example.aop.MathCalculator.div(int,int))")
+	    public void pointCut(){}; //分号加不加都无所谓
+
+	    //@Before在目标方法之前切入；切入点表达式 ↓（指定在哪个方法切入）
+	    @Before("pointCut()")
+	    public void logStart(JoinPoint joinPoint){
+	        Object[] args = joinPoint.getArgs();
+	        System.out.println("@Before "+joinPoint.getSignature().getName()+"运行。。。参数列表是：{"+ Arrays.asList(args)+"}");
+	    }
+	    //无论发不发生异常都会执行
+	    @After("pointCut()")
+	    public void logEnd(JoinPoint joinPoint){
+	        System.out.println("@After "+joinPoint.getSignature().getName()+"结束。。。");
+	    }
+	    //JoinPoint一定要放在第一位
+	    @AfterReturning(value = "pointCut()",returning = "result")
+	    public void logReturn(JoinPoint joinPoint,Object result){
+	        System.out.println("@AfterReturning "+joinPoint.getSignature().getName()+"正常返回。。。运行结果：{"+result+"}");
+	    }
+	    @AfterThrowing(value = "pointCut()",throwing = "exception")
+	    public void logException(JoinPoint joinPoint,Exception exception){
+	        System.out.println("@AfterThrowing "+joinPoint.getSignature().getName()+"异常。。。异常信息：{"+exception.getMessage()+"}");
+	    }
+
+	}
+
+	测试方法：
+	@Test
+    public void testAop(){
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAOP.class);
+        MathCalculator mathCalculator = applicationContext.getBean(MathCalculator.class);
+        mathCalculator.div(1,1);
+    }
