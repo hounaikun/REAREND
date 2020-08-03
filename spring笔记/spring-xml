@@ -84,4 +84,61 @@ jdk动态代理：
 	}
 
 cglib字节码增强
+	1.需要导入 cglib.jar 和 asm.jar 包 ；但是spring-core.jar 已经整合。
+	2.目标类
+	@Component
+	public class Target {
+	    public void addUser(){
+	        System.out.println("add user....");
+	    }
+	}
+	3.切面类
+	@Component
+	public class MyAspect {
+	    public void before(){
+	        System.out.println("before...");
+	    }
+	    public void after(){
+	        System.out.println("after...");
+	    }
+	}
+	4.工厂类
+	@Component
+	public class FactoryProxy {
+	    @Resource(name="myAspect")
+	    private MyAspect myAspect;
+	    @Resource(name="target")
+	    private Target target;
+
+	    public Target createProxy(){
+	        //1.核心类
+	        Enhancer enhancer = new Enhancer();
+	        //2.确定父类
+	        enhancer.setSuperclass(Target.class);
+	        //3.设置回调函数，MethodInterceptor 等效于 jdk InvocationHandler接口
+	        //          intercept()等效于 invoke()
+	        enhancer.setCallback(new MethodInterceptor() {
+	            @Override
+	            public Object intercept(Object proxy, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+	                myAspect.before();
+	                Object obj = method.invoke(target, objects);
+	                myAspect.after();
+	                return obj;
+	            }
+	        });
+	        //4.创建代理类
+	        Target target = (Target) enhancer.create();
+	        return target;
+	    }
+	}
+	5.测试类
+	public class TestT {
+	    @Test
+	    public void test01(){
+	        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean.xml");
+	        FactoryProxy factoryProxy = applicationContext.getBean("factoryProxy", FactoryProxy.class);
+	        Target proxy = factoryProxy.createProxy();
+	        proxy.addUser();
+	    }
+	}
 	
