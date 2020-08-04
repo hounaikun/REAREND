@@ -1,0 +1,42 @@
+1.nginx是什么：是一个高性能的HTTP和反向代理服务器。
+2.nginx特点：占有内存少，并发能力强
+3.反向代理：
+	3.1正向代理：浏览器中配置代理服务器，通过代理服务器去访问目标服务器（已知目标服务器地址，需要在浏览器中配置）
+	3.2反向代理：客户端对代理是无感的，我们只需要将请求发送到反向代理服务器，由反向代理服务器去选择目标服务器获取数据后，再返回客户端，
+					此时反向代理服务器和目标服务器对外就是一个服务器，暴露的是代理服务器地址，隐藏了真实服务器ip地址。（不知道数据源头是哪个服务器，由反	向代理服务器选择）
+4.负载均衡：
+	单个服务器解决不了，我们增加服务器的数量，然后将请求分发到各个服务器上，将原先请求集中到单个服务器上的情况改为将请求分发到多个服务器上，将负载分发到不同的服务器，也就是我们说的负载均衡。
+5.动静分离
+	为了加快网站的解析速度，可以把动态页面和静态页面由不同的服务器来解析，加快解析速度。降低原来单个服务器的压力。
+6.linux系统中安装
+	6.1 nginx相关的依赖（先安装3个依赖）			
+			zlib
+				
+			openssl
+
+				使用 yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel 完成对上两个依赖的下载和安装
+
+			pcre-8.37 
+				下载：wget https://ftp.pcre.org/pub/pcre/pcre-8.37.tar.gz
+				解压：tar -zxvf pcre-8.37.tar.gz
+				进入解压目录，执行./configure
+				执行 make && make install ，编译并安装(需要已经安装了gcc-c++)
+				查看安装的版本：pcre-config --version
+
+	6.2 安装nginx
+			下载：wget http://nginx.org/download/nginx-1.12.2.tar.gz
+			解压：tar -zxvf nginx-1.12.2.tar.gz
+				进入解压目录，执行./configure
+				执行 make && make install ，编译并安装
+			安装目录：/usr/local/nginx
+			启动脚本：/usr/local/nginx/sbin
+
+	6.3 设置防火墙（如果不设置，外部访问不了;其中云服务器要配置安全组，放开80端口）
+			防火墙启动：systemctl start firewalld
+			防火墙停止：systemctl disable firewalld
+			查看开放的端口号：firewall-cmd --list-all
+			设置开放的端口：sudo firewall-cmd --add-port=80/tcp --permanent
+			防火墙重启：firewall-cmd --reload
+
+7.nginx常用命令
+	
