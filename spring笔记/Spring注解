@@ -789,7 +789,14 @@
 	    public void logException(JoinPoint joinPoint,Exception exception){
 	        System.out.println("@AfterThrowing "+joinPoint.getSignature().getName()+"异常。。。异常信息：{"+exception.getMessage()+"}");
 	    }
-
+		@Around(value = "pointCut()")
+	    public void logAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
+	        System.out.println("环绕开始：模拟开启事务...");
+	        //执行当前目标方法
+			Object obj = proceedingJoinPoint.proceed();
+			System.out.println("环绕结束：模拟关闭事务...");
+			return obj;
+	    }
 	}
 
 	测试方法：
@@ -799,3 +806,9 @@
         MathCalculator mathCalculator = applicationContext.getBean(MathCalculator.class);
         mathCalculator.div(1,1);
     }
+
+    Aop原理：
+    	@EnableAspectJAutoProxy：
+    		1.@EnableAspectJAutoProxy是什么？
+    			@Import({AspectJAutoProxyRegistrar.class})：给容器导入AspectJAutoProxyRegistrar
+    				利用AspectJAutoProxyRegistrar
