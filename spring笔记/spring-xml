@@ -11,7 +11,7 @@ aop术语：
 6.proxy 代理类
 7.Aspect（切面）：是切入点pointcut和通知advice的结合
 
-jdk动态代理：
+jdk动态代理：导入context即可
 	1.目标类：接口 + 实现类
 	    public interface UserService {
 	        void addUser();
@@ -83,5 +83,266 @@ jdk动态代理：
 	    userService.addUser();
 	}
 
-cglib字节码增强
-	
+cglib字节码增强：导入context即可
+	1.需要导入 cglib.jar 和 asm.jar 包 ；但是spring-core.jar 已经整合。
+	2.目标类
+	@Component
+	public class Target {
+	    public void addUser(){
+	        System.out.println("add user....");
+	    }
+	}
+	3.切面类
+	@Component
+	public class MyAspect {
+	    public void before(){
+	        System.out.println("before...");
+	    }
+	    public void after(){
+	        System.out.println("after...");
+	    }
+	}
+	4.工厂类
+	@Component
+	public class FactoryProxy {
+	    @Resource(name="myAspect")
+	    private MyAspect myAspect;
+	    @Resource(name="target")
+	    private Target target;
+
+	    public Target createProxy(){
+	        //1.核心类
+	        Enhancer enhancer = new Enhancer();
+	        //2.确定父类
+	        enhancer.setSuperclass(Target.class);
+	        //3.设置回调函数，MethodInterceptor 等效于 jdk InvocationHandler接口
+	        //          intercept()等效于 invoke()
+	        enhancer.setCallback(new MethodInterceptor() {
+	            @Override
+	            public Object intercept(Object proxy, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+	                myAspect.before();
+	                //Object obj = method.invoke(target, objects);
+	                // 或者  执行代理类的父类（目标类）
+	                Object obj = methodProxy.invokeSuper(proxy, objects);
+	                myAspect.after();
+	                return obj;
+	            }
+	        });
+	        //4.创建代理类
+	        Target target = (Target) enhancer.create();
+	        return target;
+	    }
+	}
+	5.测试类
+	public class TestT {
+	    @Test
+	    public void test01(){
+	        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean.xml");
+	        FactoryProxy factoryProxy = applicationContext.getBean("factoryProxy", FactoryProxy.class);
+	        Target proxy = factoryProxy.createProxy();
+	        proxy.addUser();
+	    }
+	}
+
+aop联盟：半自动
+	aop联盟通知：
+
+    aop联盟为通知Advice定义了org.aopalliance.aop.Advice
+    分为5类：
+	    前置通知： MethodBeforeAdvice 在目标方法执行前实施增强
+	    后置通知： AfterReturningAdvice 在目标方法执行后实施增强
+	    环绕通知： methodInterceptor 在目标方法执行前后实施增强（必须手动执行目标方法）
+	    异常抛出通知： ThrowsAdvice 在方法抛出异常后实施增强
+	导包：导入 context包之外，还要AOP联盟（规范）
+	    <dependency>
+	        <groupId>aopalliance</groupId>
+	        <artifactId>aopalliance</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+
+	//创建目标类
+	<bean id="userService" class="org.aop.UserServiceImpl"></bean>
+	public class UserServiceImpl implements UserService{
+	    @Override
+	    public void addUser() {
+	        System.out.println("addUser...");
+	    }
+	}
+	 //创建切面类
+	<bean id="myAspect" class="org.aop.MyAspect"></bean>
+	public class MyAspect implements MethodInterceptor {
+	    @Override
+	    public Object invoke(MethodInvocation methodInvocation) throws Throwable {
+	        System.out.println("before...");
+
+	        //手动执行目标方法
+	        //proceed()：执行此拦截点，并进入到下一个连接点
+	        Object obj = methodInvocation.proceed();
+	        System.out.println("after...");
+	        return obj;
+	    }
+	}
+	//创建代理类
+	    使用工厂bean FactoryBean ，底层调用getObject() 返回特殊的bean
+	    ProxyFactoryBean 用于创建代理工厂bean，生成特殊代理对象
+	            interfaces：确定接口
+	                    通过<array>可以设置多个值
+	                    只有一个值时，value=""
+	            target:确定目标类
+	            interceptorNames ：通知 切面类的名称，类型为String[],如果设置一个值value=""
+	            optimize：强制使用cglib
+	                    <property name="optimize" value="true"></property>
+
+	       底层机制：
+	            如果目标类有接口，采用jdk动态代理
+	            如果没有接口，采用cglib字节码增强
+	            如果声明optimize=true，无论是否有接口，都采用cglib
+	<bean id="proxyServiceId" class="org.springframework.aop.framework.ProxyFactoryBean">
+                <property name="target" ref="userService"></property>
+                <property name="interfaces" value="org.aop.UserService"></property>
+                <property name="interceptorNames" value="myAspect"></property>
+    </bean>
+
+aop：全自动
+    导包：导入 context包之外，还要AOP联盟（规范）、aspectj.weaver
+        <dependency>
+          <groupId>aopalliance</groupId>
+          <artifactId>aopalliance</artifactId>
+          <version>1.0</version>
+        </dependency>
+        <dependency>
+          <groupId>org.aspectj</groupId>
+          <artifactId>aspectjweaver</artifactId>
+          <version>1.8.13</version>
+        </dependency>
+
+     //1.创建目标类（注意，这边加上aop之后就变成了代理类）
+     <bean id="userService" class="org.aop.UserServiceImpl"></bean>
+     public class UserServiceImpl implements UserService{
+            @Override
+            public void addUser() {
+                System.out.println("addUser...");
+            }
+        }
+     //2.创建切面类
+     <bean id="myAspect" class="org.aop.MyAspect"></bean>
+     public class MyAspect implements MethodInterceptor {
+            @Override
+            public Object invoke(MethodInvocation methodInvocation) throws Throwable {
+                System.out.println("before...");
+        
+                //手动执行目标方法
+                //proceed()：执行此拦截点，并进入到下一个连接点
+                Object obj = methodInvocation.proceed();
+                System.out.println("after...");
+                return obj;
+            }
+        }
+     //3.aop编程
+     			/*
+                <aop:pointcut> 切入点
+                        expression 填写切入点表达式
+                               execution(* org.aop.*.*(..))
+                                        返回值 包   类名 方法名 参数列表
+                <aop:advisor> 切面 = 切入点 + 通知
+                        advice-ref 通知引用
+                        pointcut-ref 切入点引用
+                */
+    <aop:config>
+            <aop:pointcut id="myPointcut" expression="execution(* org.aop.*.*(..))"/>
+            <aop:advisor advice-ref="myAspect" pointcut-ref="myPointcut"></aop:advisor>
+    </aop:config>
+    或者
+    			/*
+                <aop:aspect>  配置切面类
+	                     ref  引用的切面类(日志工具类)
+	                     aop:before 前置通知，在执行目标对象方法之前执行
+	                        method：对应切面类的方法（普通方法即可）
+	                        pointcut-ref：对应切入点表达式对象
+	                     aop:after...
+	                     ..
+	                     aop:round 环绕通知 ，需要手动执行目标类方法，需要在切面类的方法里面添加MethodInvocation methodInvocation 参数
+	            */
+		创建切面类
+	     <bean id="myAspect" class="org.aop.MyAspect02"></bean>
+		 public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+	        System.out.println("around...");
+	        Object proceed = proceedingJoinPoint.proceed();
+	        return proceed;
+	    }
+    <aop:config>
+            <aop:pointcut id="myPointcut" expression="execution(* org.aop.*.*(..))"/>
+            <aop:aspect ref="myAspect02">
+                    <aop:round method="around" pointcut-ref="myPointcut"></aop:around>
+            </aop:aspect>
+    </aop:config>
+
+切入点表达式：
+	<!--
+		 切入点表达式：
+		第一：语法
+			            访问修饰符          返回值类型（必填）     包和类               方法（必填）
+			execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern)
+			        throws-pattern?)
+		第二：作用
+		     对符合切入点表达式的类，会自动生成代理对象。
+		第三：应用
+			1.最全的写法
+				拦截返回void，指定类的指定方法，参数必须有两个：int、String
+				execution(public void com.sunny.service.Impl.AccountServiceImpl.save(int,java.lang.String))
+			2.省略访问修饰符，返回值任意的指定类的save方法，无参数
+				execution(*  com.sunny.service.Impl.AccountServiceImpl.save())
+			3.拦截com包下所有的类、以及其子包下所有的类的save（）方法
+				execution(void  com..*.save())  包名与类名或方法名称都可以使用*
+			4.拦截save（）方法/拦截所有方法
+				execution(* save())  拦截save（）
+				execution(* *())  拦截所有方法
+			5.不拦截save（）方法
+				!execution(* save())
+				not execution(* save())  注意not前面要有空格
+			6.拦截save（）方法或者update（）方法
+				execution(* save()) || execution(* update()))
+				execution(* save()) or execution(* update()))
+			7.拦截所有方法，参数任意，但必须有参数
+				execution(* *(*))
+			8.拦截所有方法，参数任意，参数可有可无
+				execution(* *(..))
+			9.对IOC容器中以Service结尾的类，生成代理对象
+				bean(*Service)
+			10.最常用
+				execution(* com.sunny..*ServiceImpl.*(..))
+				表示com.sunny包及其子包下所有的以ServiceImpl结尾的类生成代理对象
+	-->
+
+AspectJ：
+	aop联盟定义通知类型，具有特性接口，必须实现，从而确定方法名称
+        aspectj通知类型，只定义类型名称，是方法类型
+        aspectj通知个数：
+                    before:前置通知(应用：各种校验)
+                        在方法执行前执行，如果通知抛出异常，阻止方法运行
+                    afterReturning:后置通知(应用：常规数据处理)
+                       方法正常返回后执行，如果方法中抛出异常，通知无法执行必须在方法执行后才执行，所以可以获得方法的返回值。
+                    around:环绕通知(应用：十分强大，可以做任何事情)
+                       方法执行前后分别执行，可以阻止方法的执行必须手动执行目标方法
+                    afterThrowing:抛出异常通知(应用：包装异常信息)
+                       方法抛出异常后执行，如果方法没有抛出异常，无法执行
+                    after:最终通知(应用：清理现场)
+                       方法执行完毕后执行，无论方法中是否出现异常
+    导包：除了context外，还有aop联盟规范（aopalliance）、aspect 规范（aspectj.weaver）、spring aspect实现（aspects）
+                    <dependency>
+                      <groupId>aopalliance</groupId>
+                      <artifactId>aopalliance</artifactId>
+                      <version>1.0</version>
+                    </dependency>
+                    <dependency>
+                      <groupId>org.aspectj</groupId>
+                      <artifactId>aspectjweaver</artifactId>
+                      <version>1.8.13</version>
+                    </dependency>
+                    <dependency>
+                            <groupId>org.springframework</groupId>
+                            <artifactId>spring-aspects</artifactId>
+                            <version>5.1.15.RELEASE</version>
+                    </dependency>
+     基于xml配置：请查看aop全自动最后的<aop:aspect>
+     基于注解配置：请查看spring注解
