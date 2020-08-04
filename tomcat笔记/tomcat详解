@@ -1,0 +1,11 @@
+Tomcat 默认端口号 8080
+Tomcat 部署和访问web工程
+	1 部署：将web工程的目录直接拷贝到Tomcat的webapps下；访问：http://ip:port/工程名/目录下/文件名
+	2 部署：在Tomcat下conf目录下\Catalina\localhost\下，创建一个配置文件abc.xml,abc.xml文件中写入
+		<!--Context 表示一个工程上下文 path 表示工程的访问路径:/abc docBase 表示你的工程目录在哪里 --> 
+		<Contextpath="/abc"docBase="E:\book"/>
+			访问：:http://ip:port/abc/ 就表示访问的是E:\book
+Tomcat工程访问方式：
+	http://ip:port/ --> 没有工程名的时候，默认访问的是ROOT工程
+	http://ip:port/工程名 --> 没有资源名，默认访问index.html页面
+ 
