@@ -84,6 +84,7 @@
 		}
 	9.4 location写法
 		地址：https://www.cnblogs.com/phonecom/p/7216706.html
+			本地地址：file:///D:/%E6%89%8B%E5%8A%A8%E5%AD%98%E7%9A%84%E7%BD%91%E9%A1%B5/nginx%E9%85%8D%E7%BD%AElocation.html
 10.负载均衡
 	10.1 实现效果
 		浏览器输入http://ip/edu/a.html,负载均衡效果，平均分配到8080和8081端口中去
