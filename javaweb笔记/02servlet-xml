@@ -1,0 +1,139 @@
+JavaWeb三大组件：Servlet程序、Filter过滤器、Listener监听器
+Servlet：运行在服务器上的一个java小程序，它可以接收客户端发过来的请求，并响应数据给客户端
+web.xml文件中配置Servlet：
+	 <!-- servlet标签给Tomcat配置Servlet程序 -->
+    <servlet>
+        <!-- 起别名-->
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>com.kuen.servlet.HelloServlet</servlet-class>
+        <init-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:mysql://localhost:3306/vcc</param-value>
+        </init-param>   
+    </servlet>
+    
+    <!-- servlet-mapping 标签给servlet程序配置访问地址  -->
+    <servlet-mapping>
+        <!-- 告诉服务器，给哪个Servlet程序使用  -->
+        <servlet-name>HelloServlet</servlet-name>
+        <!-- 访问地址
+                / 斜杠在服务器解析的时候，表示地址为：http://ip:port/工程路径 <br/>
+                /hello 表示地址为：http://ip:port/工程路径/hello
+        -->
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+Servlet的生命周期：
+    1.执行Servlet构造器方法
+    2.执行init初始化方法
+        1、2是在第一次访问时创建Servlet程序会调用
+    3.执行service方法
+        3每次访问都会调用
+    4.执行destroy销毁方法
+        在web工程停止的时候调用
+    public class HelloServlet implements Servlet {
+        public HelloServlet() {
+        }
+        @Override
+        public void init(ServletConfig servletConfig) throws ServletException {
+        }
+        @Override
+        public ServletConfig getServletConfig() {
+        }
+
+        @Override
+        public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+        }
+        @Override
+        public String getServletInfo() {
+        }
+        @Override
+        public void destroy() {
+        }
+    }
+
+Servlet类的继承关系:
+    自定义的Servlet 
+        继承 Class HttpServlet（抽取了service方法，并分成了doGet()和doPost()）
+        继承 Class GenericServlet（做了很多空实现，并持有一个servletConfig类的引用）
+        实现接口 Interface Servlet（定义了访问规范）
+
+ServletConfig:
+    - ServletConfig和Servlet都是由Tomcat负责创建，我们负责使用
+    - Servlet程序默认第一次访问的时候创建，ServletConfig是每个Servlet创建时，就会创建一个对应的ServletConfig
+    三大作用：
+        1.获取Servlet程序的别名servlet-name的值
+            servletConfig.getServletName();
+        2.获取初始化参数init-param
+            servletConfig.getInitParameter("username"); 
+        3.获取ServletContext对象
+            servletConfig.getServletContext();
+    如果自定义的Servlet是继承了GenericServlet或者HttpServlet，那么如果要重写init(ServletConfig servletConfig)方法，需要开头调用super.init(servletConfig),要不然调用getServletContext()获得的值就是null；
+
+ServletContext：
+    1、ServletContext 是一个接口，它表示 Servlet 上下文对象 
+    2、一个 web 工程，只有一个 ServletContext 对象实例。 
+    3、ServletContext 对象是一个域对象，可以存储数据。
+    4、ServletContext 是在 web 工程部署启动的时候创建。在 web 工程停止的时候销毁
+    四大作用：
+        1、获取 web.xml 中配置的上下文参数  context-param
+            context.getInitParameter("username")
+        2、获取当前的工程路径，格式:/工程路径 
+            context.getContextPath()；
+        3、获取工程部署后在服务器硬盘上的绝对路径 
+            context.getRealPath("/")； /斜杠被服务器解析地址为 :http://ip:port/工程名/  映射到IDEA代码的web目录
+        4、像 Map 一样存取数据
+
+Http协议：
+    所谓 HTTP 协议，就是指，客户端和服务器之间通信时，发送的数据，需要遵守的规则，叫 HTTP 协议。
+    HTTP 协议中的数据又叫报文。
+
+常用的响应码说明：
+    200 表示请求成功 
+    302 表示请求重定向（明天讲） 
+    404 表示请求服务器已经收到了，但是你要的数据不存在（请求地址错误） 
+    500 表示服务器已经收到请求，但是服务器内部错误（代码错误）
+
+HttpServletRequest:
+    - 每次只要有请求进入Tomcat服务器，Tomcat服务器就会把请求过来的HTTP协议信息解析好封装到Request对象中。
+        然后传递到service方法（doGet和doPost）我中给我们使用。们可以通过HttpServletRequest对象，获取到所有请求的信息。
+    常用方法：
+        i.getRequestURI()获取请求的资源路径
+        ii.getRequestURL()获取请求的统一资源定位符（绝对路径）
+        iii.getRemoteHost()获取客户端的ip地址
+        iv.getHeader()获取请求头
+        v.getParameter()获取请求的参数
+        vi.getParameterValues()获取请求的参数（多个值的时候使用）
+        vii.getMethod()获取请求的方式GET或POST
+        viii.setAttribute(key,value);设置域数据
+        ix.getAttribute(key);获取域数据
+        x.getRequestDispatcher()获取请求转发对象
+    get请求中文乱码问题：
+        原因：       
+            1.浏览器发送时文字编码是和页面编码保持一致。
+            2.tomcat中接收请求没有设置编码的情况下，默认使用ISO-8859-1编码。
+            3.页面编码使用UTF-8，get方式自然使用UTF-8编码，但服务器接收没有指定编码格式，默认使用ISO-8859-1，传参带中文时自然乱码。
+        解决：
+            //获取请求参数
+            String username=req.getParameter("username");
+            //1先以iso8859-1进行编码//2再以utf-8进行解码
+            username=newString(username.getBytes("iso-8859-1"),"UTF-8")
+    post请求中文乱码问题：
+        发过来的内容是用utf-8编过码的，tomcat中接收请求没有设置编码的情况下，默认使用ISO-8859-1编码。
+        //设置请求体的字符集为UTF-8，从而解决post请求的中文乱码问题，一定要放在request获得参数之前写。
+        req.setCharacterEncoding("UTF-8");
+    URI和url的区别：
+        1.URI 在于I(Identifier)是统一资源标识符，可以唯一标识一个资源。
+        2.URL在于Locater，一般来说（URL）统一资源定位符，可以提供找到该资源的路径。
+        3.其实大家对uri可以认为只是唯一识别的编号,通过唯一标识符身份证号标识一个人,而url就是身份证住址+姓名，通过地址标识一个人
+        4.所以不论是用定位的方式还是用编号的方式，我们都可以唯一确定一个人，都是URl的一种实现，而URL就是用定位的方式实现的URI。所以说url是特殊的uri。
+    请求转发：
+        是什么？
+            服务器收到请求后，从一次资源跳转到另一个资源的操作叫请求转发。
+        特点？
+
+        注意：
+            请求转发必须要以斜杠打头，/斜杠表示地址为：http://ip:port/工程名/,映射到IDEA代码的web目录
+        语法：
+            req.getRequestDispatcher("/servlet2").forward(req,resp);
+
