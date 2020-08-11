@@ -1,0 +1,121 @@
+1.需要的jar包
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.1.5.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>5.1.15.RELEASE</version>
+    </dependency>
+
+2.springmvc搭建过程
+	2.1导入jar包
+	2.2在web.xml中配置spirngMVC的核心（前端）控制器DispatcherServlet
+		作用：加载springmvc的配置文件，DispatcherServlet会自动加载配置文件，此时的配置文件有默认的位置和名称
+			默认位置：WEB-INFO下（Spring也在这里，默认名称applicationContext.xml）；默认名称：<servlet-name>-servlet.xml,例如下面的servlet配置文件名称：springMVC-servlet.xml
+			当加载了配置文件，springMVC就会根据扫描组件找到控制器。
+		<servlet>
+	      <servlet-name>springMVC</servlet-name>
+	      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	    </servlet>
+	    <servlet-mapping>
+	      <servlet-name>springMVC</servlet-name>
+	      <url-pattern>/</url-pattern>
+	    </servlet-mapping>
+
+	    <!--  扫描组件，将加上@Controller注解的类作为springMVC的控制层  -->
+	    <context:component-scan base-package="org.example.web"/>
+
+	    <!-- 
+	    	配置视图解析器
+	    		作用：将prefix + 视图名称（ModelAndView的值） + suffix 确定最终要跳转的页面
+	    -->
+	    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	        <property name="prefix" value="/WEB-INF/view"></property>
+	        <property name="suffix" value=".jsp"></property>
+	    </bean>
+3.spring工作流程
+	3.1、用户发送请求至前端控制器DispatcherServlet。
+	3.2、DispatcherServlet收到请求调用HandlerMapping处理器映射器。
+	3.3、处理器映射器找到具体的处理器(可以根据xml配置、注解进行查找)，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。
+	3.4、 DispatcherServlet调用HandlerAdapter处理器适配器。
+	3.5、HandlerAdapter经过适配调用具体的处理器(Controller，也叫后端控制器)。
+	3.6、Controller执行完成返回ModelAndView。
+	3.7、HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet。
+	3.8、DispatcherServlet将ModelAndView传给ViewReslover视图解析器。
+	3.9、ViewReslover解析后返回具体View.
+	3.10、DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图中）。 
+	3.11、DispatcherServlet响应用户。
+4.常用注解
+	@RequestMapping()
+		注解有六个属性:
+			value：指定请求的实际地址
+			method：指定请求的method类型,枚举类型，GET、POST、PUT、DELETE等
+			params：指定request中必须包含某些参数值是，才让该方法处理。
+			headers：指定request中必须包含某些指定的header值，才能让该方法处理请求。
+			consumes：指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;
+			produces:指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回；
+		位置：类、方法
+		占位符：
+			@RequestMapping("/test/{username}") http://localhost:8080/test?username=admin
+	@PathVariabl("username") String username
+		位置：形参上
+		功能：获得占位符上的值
+	@requestParam()
+		注解常用三个属性：
+			defaultValue 表示设置默认值
+			required 通过boolean设置是否是必须要传入的参数
+			value 值表示接受的传入的参数名称
+		位置：形参
+		功能：获得客户端数据
+5.Ant路径风格
+	springmvc支持Ant方式的请求路径
+	在Ant中，有3种匹配符
+	* 任意字符
+	？ 任意一个字符
+	** 任意多层目录
+6.Restful风格
+	具体看festful笔记。
+7.HiddenHttpMethodFilter（springmvc过滤器）
+	浏览器form表单只支持GET与POST请求，而DELETE、PUT等method并不支持，spring3.0添加了一个过滤器，可以将这些请求转换为标准的http方法，
+		使得支持GET、POST、PUT与DELETE请求，该过滤器为HiddenHttpMethodFilter。
+    HiddenHttpMethodFilter的父类是OncePerRequestFilter，它继承了父类的doFilterInternal方法，工作原理是将jsp页面的form表单的method属性值在doFilterInternal方法中转化为标准的Http方法，	即GET,、POST、 HEAD、OPTIONS、PUT、DELETE、TRACE，然后到Controller中找到对应的方法。
+    需要注意的是，由于doFilterInternal方法只对method为post的表单进行过滤，HiddenHttpMethodFilter必须作用于dispatcher前。
+    步骤：
+    	1. 需要在web.xml文件中配置 HiddenHttpMethodFilter 
+        <filter>
+            <filter-name>HiddenHttpMethodFilter</filter-name>
+            <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+        </filter>
+        
+        <filter-mapping>
+            <filter-name>HiddenHttpMethodFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
+        2. 需要在发送 POST 请求时携带一个 name="_method" 的隐藏域, 值为 DELETE 或 PUT
+        <form action="springmvc/testRest/1" method="post">
+	        <input type="hidden" name="_method" value="PUT"/>
+	        <input type="submit" value="TestRest PUT"/>
+        </form>
+        <br><br>
+    
+        <form action="springmvc/testRest/1" method="post">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <input type="submit" value="TestRest DELETE"/>
+        </form>
+        <br><br>
+        
+        <form action="springmvc/testRest" method="post">
+            <input type="submit" value="TestRest POST"/>
+        </form>
+        <br><br>
+        
+        <a href="springmvc/testRest/1">Test Rest Get</a>
+8.springmvc获取客户端数据
+	1.在处理请求方法时，加入相应的形参，保证形参参数名和传递的数据的参数名保持一致，就可以自动赋值
+		当不满足赋值条件时，可以使用@requestParam()的value属性，指定映射关系
+9.
+

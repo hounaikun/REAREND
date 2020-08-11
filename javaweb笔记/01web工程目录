@@ -5,3 +5,7 @@ web工程目录介绍：
 			classes：存放编译的class文件（idea中每个模块需要自己配置）
 			lib：用来存放第三方jar包（idea需要自己添加此文件夹，并且jar包需要自己配置导入）
 			web.xml：整个动态web工程的配置部署描述文件，可以配置很多web工程的组件
+web工程映射到服务器目录：
+	会把web工程中的web目录改成web项目的名字放到tomcat中的webapps目录下，
+		classes放的是就是src下所有的文件，表示类路径
+
