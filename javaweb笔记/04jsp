@@ -1,0 +1,110 @@
+1.是什么?
+	本质上是一个Servlet程序
+2.jsp中的常用脚本？
+	2.1声明脚本
+		声明脚本的格式是：<%!声明java代码%>
+		作用：可以给jsp翻译出来的java类定义属性和方法甚至是静态代码块、内部类等。
+	2.2表达式脚本（常用）
+		表达式脚本的格式是：<%=表达式%>
+		表达式脚本的作用是：的jsp页面上输出数据。
+		表达式脚本的特点：
+		1、所有的表达式脚本都会被翻译到_jspService()方法中
+		2、表达式脚本都会被翻译成为out.print()输出到页面上
+		3、由于表达式脚本翻译的内容都在_jspService()方法中,所以_jspService()方法中的对象都可以直接使用。
+		4、表达式脚本中的表达式不能以分号结束。
+	2.3代码脚本
+		代码脚本的格式是：<%java语句%>
+		代码脚本的作用是：可以在jsp页面中，编写我们自己需要的功能（写的是java语句）。
+		代码脚本的特点是：
+		1、代码脚本翻译之后都在_jspService方法中
+		2、代码脚本由于翻译到_jspService()方法中，所以在_jspService()方法中的现有对象都可以直接使用。
+		3、还可以由多个代码脚本块组合完成一个完整的java语句。
+		4、代码脚本还可以和表达式脚本一起组合使用，在jsp页面上输出数据
+3.jsp九大内置对象
+	jsp中的内置对象，是指Tomcat在翻译jsp页面成为Servlet源代码后，内部提供的九大对象，叫内置对象。
+	3.1jsp的九大内置对象
+		request 请求对象
+		response 响应对象
+		pageContext jsp的上下文对象
+		session 会话对象
+		application ServletContext对象
+		config ServletConfig对象
+		out jsp输出流对象
+		page 指向当前jsp对象
+		exception 异常对象
+4.jsp四大域对象
+	pageContext、
+	request、
+	session、 一个会话范围内有效（打开浏览器访问服务器，直到关闭浏览器）
+	application（整个web工程范围内都有效（只要web工程不停止，数据都在））
+	四个域在使用的时候，优先顺序分别是，他们从小到大的范围的顺序：
+		pageContext====>>>request====>>>session====>>>application
+5.jsp中的out输出和response.getWriter输出的区别：
+	当jsp页面中所有代码执行完成后会做一下两个操作：
+		5.1执行out.flush()操作，会把out缓冲区中的数据追加写入到	response缓冲区末尾
+		5.2会执行response的刷新操作，把全部数据写给客户端
+	结论：在jsp页面中，可以统一用out.print()来输出
+6.jsp的常用标签
+	6.1静态包含
+		<%@ include file="" %>就是静态包含
+			file 属性指定你要包含的jsp页面的路径
+			地址中第一个斜杆 / 表示为http://ip:port/工程/ 映射到代码的web目录
+
+		静态包含的特点：
+			1.静态包含不会翻译被包含的jsp页面。
+			2.静态包含其实是把被包含的jsp页面的代码拷贝到包含的位置执行输出。
+	6.2动态包含
+		<jsp:include page=""></jsp:include> 这是动态包含
+		page 属性是指定你要包含的jsp页面的路径
+		动态包含也可以像静态包含一样。把被包含的内容执行输出到包含位置
+
+		动态包含的特点：
+			1、动态包含会把包含的jsp页面翻译成java代码
+			2、动态包含底层代码使用如下代码去调用被包含的jsp页面执行输出
+				JspRuntimeLibrary.include(request,response,"/include/footer.jsp",out,false);
+			3、动态包含，可以传递参数
+	6.3转发
+		<jsp:forward page=""></jsp:forward>是请求转发标签，它的功能就是请求转发
+			page 属性设置请求转发的路径
+7.Listener监听器
+	- Listener 监听器它是 JavaWeb 的三大组件之一。JavaWeb 的三大组件分别是：Servlet 程序、Filter 过滤器、Listener 监
+		听器。
+	- Listener 它是 JavaEE 的规范，就是接口。
+	- 监听器的作用是，监听某种事物的变化。然后通过回调函数，反馈给客户（程序）去做一些相应的处理。
+	9.1ServletContextListener监听器
+		ServletContextListener 它可以监听 ServletContext对象的创建和销毁。
+		ServletContext 对象在 web 工程启动的时候创建，在 web 工程停止的时候销毁。
+		监听到创建和销毁之后都会分别调用 ServletContextListener 监听器的方法反馈。
+
+		public interface ServletContextListener extends EventListener {
+			/**
+			* 在 ServletContext 对象创建之后马上调用，做初始化
+			*/
+			public void contextInitialized(ServletContextEvent sce);
+			/**
+			* 在 ServletContext 对象销毁之后调用
+			*/
+			public void contextDestroyed(ServletContextEvent sce);
+		}
+	9.2使用步骤：
+		如何使用 ServletContextListener 监听器监听 ServletContext 对象。
+		使用步骤如下：
+		1、编写一个类去实现 ServletContextListener
+		2、实现其两个回调方法
+		3、到 web.xml 中去配置监听器
+
+		public class MyServletContextListenerImpl implements ServletContextListener {
+			@Override
+			public void contextInitialized(ServletContextEvent sce) {
+			System.out.println("ServletContext 对象被创建了");
+			}
+			@Override
+			public void contextDestroyed(ServletContextEvent sce) {
+			System.out.println("ServletContext 对象被销毁了");
+			}
+		}
+
+		<!--配置监听器-->
+		<listener>
+			<listener-class>com.atguigu.listener.MyServletContextListenerImpl</listener-class>
+		</listener>
