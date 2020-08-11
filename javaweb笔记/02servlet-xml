@@ -131,9 +131,46 @@ HttpServletRequest:
         是什么？
             服务器收到请求后，从一次资源跳转到另一个资源的操作叫请求转发。
         特点？
-
+            1.浏览器地址栏没有变化
+            2.它们是一次请求
+            3.它们共享Request域中的数据
+            4.可以转发到WEB-INF目录下
+            5.不可以访问工程以外的资源
         注意：
             请求转发必须要以斜杠打头，/斜杠表示地址为：http://ip:port/工程名/,映射到IDEA代码的web目录
         语法：
             req.getRequestDispatcher("/servlet2").forward(req,resp);
+    web中/斜杠的不同意义：
+        在web中/是一种绝对路径
+        / 如果被浏览器解析，得到的地址是：http://ip:port/
+          如果被服务器解析，得到的地址是：http://ip:port/工程路径
+        特殊情况：response.sendRediect("/"); 把斜杠发给浏览器解析，得到的是http://ip:port/
+
+HttpServletResponse：
+    - HttpServletResponse类和HttpServletRequest类一样。每次请求进来，Tomcat服务器都会创建一个Response对象传递给Servlet程序去使用。
+        HttpServletRequest表示请求过来的信息，HttpServletResponse表示所有响应的信息，我们如果需要设置返回给客户端的信息，
+        都可以通过HttpServletResponse对象来进行设置
+    两个输出流：
+        字节流：getOutputStream(); //常用于下载（传递二进制数据）
+        字符流：getWriter(); //常用于回传字符串（常用）
+        两个流同时只能使用一个。
+    响应的乱码解决：
+        //它会同时设置服务器和客户端都使用UTF-8字符集，还设置了响应头
+        //此方法一定要在获取流对象之前调用才有效
+        resp.setContentType("text/html;charset=UTF-8")
+    请求重定向：
+        特点：
+            1.浏览器地址栏会发生变化
+            2.两次请求
+            3.不共享Request域中的数据
+            4.不能访问WEB-INF下的资源
+            5.可以访问工程外的资源
+        方案：
+            请求重定向的第一种方案：
+                //设置响应状态码302，表示重定向，（已搬迁）
+                resp.setStatus(302);
+                //设置响应头，说明新的地址在哪里
+                resp.setHeader("Location","http://localhost:8080");
+            请求重定向的第二种方案（推荐使用）：
+            resp.sendRedirect("http://localhost:8080");
 
