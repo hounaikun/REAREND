@@ -64,13 +64,14 @@
 	@PathVariabl("username") String username
 		位置：形参上
 		功能：获得占位符上的值
-	@requestParam()
+	@RequestParam()
 		注解常用三个属性：
 			defaultValue 表示设置默认值
 			required 通过boolean设置是否是必须要传入的参数
 			value 值表示接受的传入的参数名称
 		位置：形参
 		功能：获得客户端数据
+	@RequestHeader
 5.Ant路径风格
 	springmvc支持Ant方式的请求路径
 	在Ant中，有3种匹配符
@@ -115,7 +116,7 @@
         
         <a href="springmvc/testRest/1">Test Rest Get</a>
 8.springmvc获取客户端数据
-	1.在处理请求方法时，加入相应的形参，保证形参参数名和传递的数据的参数名保持一致，就可以自动赋值
+	在处理请求方法时，加入相应的形参，保证形参参数名和传递的数据的参数名保持一致，就可以自动赋值
 		当不满足赋值条件时，可以使用@requestParam()的value属性，指定映射关系
 9.
 
