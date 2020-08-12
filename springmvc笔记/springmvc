@@ -20,6 +20,17 @@
 		<servlet>
 	      <servlet-name>springMVC</servlet-name>
 	      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	      <!--  用来设置MVC配置文件的地址以及名称  -->
+		    <init-param>
+		      <param-name>contextConfigLocation</param-name>
+		      <param-value>classpath:conf/springmvc.xml</param-value>
+		    </init-param>
+		    <!--  设置servlet的加载时间，默认第一次访问时加载，
+		          若设置此标签，会将servlet加载时间提前到项目启动时；
+		          此标签中可以写整数，但是写负整数和0和没有设置一样，
+		          只有设置正整数才有用，值越小，优先级越高
+		    -->
+		    <load-on-startup>1</load-on-startup>
 	    </servlet>
 	    <servlet-mapping>
 	      <servlet-name>springMVC</servlet-name>
@@ -71,7 +82,36 @@
 			value 值表示接受的传入的参数名称
 		位置：形参
 		功能：获得客户端数据
-	@RequestHeader
+	@RequestHeader()
+		功能：获取请求头信息
+		用法：和@RequestParam()用法差不多。
+	@CookieValue()
+		功能：获取请求的cookie信息
+		用法：和@RequestParam()差不多
+	@ModelAttribute()
+		功能：
+			@ModelAttribute注释一个方法：
+				控制器中的@ModelAttribute方法是在同一控制器中的@RequestMapping方法被调用之前调用的。
+				有两种类型的@ModelAttribute方法。
+					一种是：只加入一个属性，用方法的返回类型隐含表示。返回User类型，那么这个model属性的名称是user，也可以用@ModelAttribute注释的value属性，来指定model属性的名称。
+					另一种是：方法接受一个Model类型的参数，这个model可以加入任意多个model属性。
+			@ModelAttribute注解用于方法参数：
+				它有了双重功能，即"存/取"。首先，它从模型中取出数据并赋予对应的参数，如果模型中尚不存在，则实例化一个，并存放于模型中；其次，一旦模型中已存在此数据对象，接下来一个很重要的步骤便是将请求参数绑定到此对象上（请求参数名映射对象属性名），这是Spring MVC提供的一个非常便利的机制--数据绑定。
+		注意：
+			@ModelAttribute和@RequestMapping同时注释一个方法时，这个方法的返回值并不是表示一个视图名称，而是model属性的值
+	@SessionAttributes()
+			若希望在多个请求之间共用数据，则可以在控制器类上标注一个 @SessionAttributes,配置需要在session中存放的数据范围，Spring MVC将存放在model中对应的数据暂存到
+				HttpSession 中。
+			@SessionAttributes只能使用在类定义上。
+			@SessionAttributes除了可以通过属性名指定需要放到会话中的属性外，还可以通过模型属性的对象类型指定哪些模型属性需要放到会话中 例如：
+				@SessionAttributes(types=User.class)会将model中所有类型为User的属性添加到会话中。
+				@SessionAttributes(value={“user1”, “user2”}) 会将model中属性名为user1和user2的属性添加到会话中。
+				@SessionAttributes(types={User.class, Dept.class}) 会将model中所有类型为 User和Dept的属性添加到会话中。
+				@SessionAttributes(value={“user1”,“user2”},types={Dept.class})会将model中属性名为user1和user2以及类型为Dept的属性添加到会话中。
+			value和type之间是并集关系
+			使用：
+				@SessionAttributes 是用来在controller 内部共享 model 属性的。我们可以在需要访问 Session 属性的 controller 上加上 @SessionAttributes，然后在 action 需要的 User 参数上加上 @ModelAttribute，并保证两者的属性名称一致。SpringMVC 就会自动将 @SessionAttributes 定义的属性注入到 ModelMap 对象，在 setup action 的参数列表时，去 ModelMap 中取到这样的对象，再添加到参数列表。只要我们不去调用 SessionStatus 的 setComplete() 方法，这个对象就会一直保留在 Session 中，从而实现 Session 信息的共享。
+				@SessionAttributes清除@SessionAttributes需要清除时，使用SessionStatus.setComplete();来清除。注意，它只清除@SessionAttributes的session，不会清除HttpSession的数据。故如用户身份验证对象的session一般不用它来实现，还是用session.setAttribute等传统的方式实现。
 5.Ant路径风格
 	springmvc支持Ant方式的请求路径
 	在Ant中，有3种匹配符
@@ -118,5 +158,59 @@
 8.springmvc获取客户端数据
 	在处理请求方法时，加入相应的形参，保证形参参数名和传递的数据的参数名保持一致，就可以自动赋值
 		当不满足赋值条件时，可以使用@requestParam()的value属性，指定映射关系
-9.
+9.获取servlet api（方法参数加入用即可）
+	HttpServletRequest
+	HttpServletResponse
+	HttpSession
+	InputStream
+	OutputStream
+	Reader
+	Writer
+10.ModelAndView的使用：
+	步骤：
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("",""); //往request域中存值
+		mav.serViewName(""); //设置视图名称，实现页面跳转（底层是用请求转发实现的）
+		return mav; //传给视图解析器
+	源码：
+		多看几遍视频
+11.三种方式实现作用域放值：
+	1.ModelAndView的使用
+	2.public String param(Map<String,Object> map){
+			map.put("","");//往request域中存值
+			reutrn ""; ////设置视图名称，实现页面跳转（底层是用请求转发实现的，并传给视图解析器
+	  }
+	3.public String param(Model model){
+			model.addAttribute("","")//往request域中存值
+			reutrn ""; ////设置视图名称，实现页面跳转（底层是用请求转发实现的，并传给视图解析器
+	  }
+12.视图解析：
+	12.1
+		无论控制器返回一个String、ModelAndView、View都会转成ModelAndView对象，由视图解析器解析视图，然后进行页面得跳转。
+	12.2View
+		有什么：
+			InternalResourceView:转发视图
+			JstlView：转发视图
+			RedirectView：重定向视图（reutrn "redirect:/";）
+		作用：
+			处理数据模型、实现页面跳转（转发，重定向）
+		源码：
+			多看几遍视频
+13.指定配置文件位置&名称&servlet加载时间
+	在web.xml servlet中设置。
+14.spring编码过滤器
+	在web.xml配置，必须放在所有过滤器第一个
+	<filter>
+	    <filter-name>CharacterEncodingFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	    <init-param>
+	      <param-name>encoding</param-name>
+	      <param-value>UTF-8</param-value>
+	    </init-param>
+	 </filter>
+	 <filter-mapping>
+	    <filter-name>CharacterEncodingFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	 </filter-mapping>
+
 
