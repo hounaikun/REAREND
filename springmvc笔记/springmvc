@@ -34,6 +34,16 @@
 	    </servlet>
 	    <servlet-mapping>
 	      <servlet-name>springMVC</servlet-name>
+	       <!-- 
+	       1. /* 拦截所有 jsp js png .css 真的全拦截 建议不使用 
+	       2. *.action *.do 拦截以do action结尾的请求
+	       3. / 拦截所有 对静态资源放行 
+
+	       注意：
+	       	web.xml 中配置了url-pattern后，会起到两个作用：
+			（1）是限制 url 的后缀名，只能为".do"。
+			（2）就是在没有填写后缀时，默认在你配置的 Controller 的 RequestMapping 中添加".do"的后缀。
+          -->
 	      <url-pattern>/</url-pattern>
 	    </servlet-mapping>
 
@@ -112,6 +122,17 @@
 			使用：
 				@SessionAttributes 是用来在controller 内部共享 model 属性的。我们可以在需要访问 Session 属性的 controller 上加上 @SessionAttributes，然后在 action 需要的 User 参数上加上 @ModelAttribute，并保证两者的属性名称一致。SpringMVC 就会自动将 @SessionAttributes 定义的属性注入到 ModelMap 对象，在 setup action 的参数列表时，去 ModelMap 中取到这样的对象，再添加到参数列表。只要我们不去调用 SessionStatus 的 setComplete() 方法，这个对象就会一直保留在 Session 中，从而实现 Session 信息的共享。
 				@SessionAttributes清除@SessionAttributes需要清除时，使用SessionStatus.setComplete();来清除。注意，它只清除@SessionAttributes的session，不会清除HttpSession的数据。故如用户身份验证对象的session一般不用它来实现，还是用session.setAttribute等传统的方式实现。
+	@Responsebody表示该方法的返回结果直接写入HTTP response body中。一般在异步获取数据时使用，
+			在使用@RequestMapping后，返回值通常解析为跳转路径，加上@Responsebody后返回结果不会被解析为跳转路径，而是直接写入HTTP response body中。比如异步获取json数据，加上@Responsebody后，会直接返回json数据。	
+
+	@RequestBody 将HTTP请求正文转换为适合的HttpMessageConverter对象。@ResponseBody 将内容或对象作为 HTTP 响应正文返回，并调用适合HttpMessageConverter的Adapter转换对象，写入输出流。
+			作用：
+           （1）该注解用于读取Request请求的body部分数据，使用系统默认配置的HttpMessageConverter进行解析，然后把相应的数据绑定到要返回的对象上； 
+           （2）再把HttpMessageConverter返回的对象数据绑定到 controller中方法的参数上。
+		    使用时机：
+		   （1）GET、POST方式提时，根据request header Content-Type的值来判断：application/x-www-form-urlencoded，可选（即非必须，因为这种情况的数据@RequestParam, @ModelAttribute也可以处理，当然@RequestBody也能处理）；multipart/form-data，不能处理（即使用@RequestBody不能处理这种格式的数据）；其他格式，必须（其他格式包括application/json, application/xml等，这些格式的数据，必须使用@RequestBody来处理）； 
+		   （2）PUT方式提交时，根据request header Content-Type的值来判断：application/x-www-form-urlencoded，必须；multipart/form-data，不能处理；其他格式，必须；说明：request的body部分的数据编码格式由header部分的Content-Type指定；
+			@RequestBody将HTTP请求正文插入方法中，使用适合的HttpMessageConverter将请求体写入某个对象。
 5.Ant路径风格
 	springmvc支持Ant方式的请求路径
 	在Ant中，有3种匹配符
@@ -212,5 +233,53 @@
 	    <filter-name>CharacterEncodingFilter</filter-name>
 	    <url-pattern>/*</url-pattern>
 	 </filter-mapping>
-
-
+15.静态资源的处理
+	在springMVC-servlet.xml
+		<!--
+        配置Tomcat默认的servlet，DefaultServlet
+        注意：当DefaultServlet所设置的<url-pattren>的值和开发人员所配置的servlet的<url-pattren>相同，以开发人员所配置的servlet优先
+        功能：当客户端发送请求，由于DefaultServlet所设置的<url-pattren>的值和开发人员所配置的DispatcherServlet的<url-pattren>都是/，
+                因此会先通过DispatcherServlet处理请求，找是否有相对应的处理器，有则处理，无则交给DefaultServlet处理
+	     -->
+	    <mvc:default-servlet-handler/>
+	    <!--  mvc驱动  支持很多功能，比如支持DefaultServlet起作用、jackson起作用-->
+	    <mvc:annotation-driven/>
+16.springmvc处理JSON
+	springmvc默认是jackson（前提导入jackson的jar包，然后<mvc:annotation-driven/>开启此作用。）处理json数据。
+	可以自己使用Gson、FastJson等。
+	步骤（发送客户端）：
+		1.加<mvc:annotation-driven/>
+		2.导入jackson的jar包
+		3.@Responsebody
+	服务器接收json：、
+		HttpMessageConverter<T>
+17.文件下载：
+	网上搜。。。
+18.文件上传：
+	1.SpringMVC上下文中默认没有装配MultipartResolver，因此默认情况下其不能处理文件上传工作。如果想使用Spring的文件上传功能，则需要在上下文中配置MultipartResolver。
+		MultipartResolver 作用：将前端上传的文件转换为java里的File对象。
+		在springmvc-config.xml进行配置文件如下：
+		<bean id="multipartResolver"
+		        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		         <property name="defaultEncoding" value="UTF-8"/>  
+		        <property name="maxUploadSize" value="10000000"/>
+		</bean>
+	2.引入jar包，具体如下
+	3.为了能上传文件，必须将表单的method设置为POST，并将enctype设置为multipart/form-data。只有在这样的情况下，浏览器才会把用户选择的文件以二进制数据发送给服务器
+		<form action='post' enctype='multipart/form-data' action='upload.action'>
+			<input type='file' name='filename'>
+			<input type='file' name='filename'>
+		</form>
+	 4.Spring MVC会将上传的文件绑定到MultipartFile对象中。MultipartFile提供了获取上传文件内容、文件名等方法。通过transferTo()方法还可以将文件存储到硬件中。
+	 	MultipartFile对象中的常用方法如下：
+		# void transferTo(File dest)：将上传文件保存到一个目录文件中；
+		# String getOriginalFilename()：获取上传文件的原名
+		# String getContentType[]：获取文件MIME类型，如image/jpeg等
+		# boolean isEmpty()：是否有上传文件
+		@RequestMapping("/upload")
+		public String uploadFile(@RequestParam("filename") MultipartFile[] files,HttpSession session){
+			String fileName = files.getOriginalFilename();
+			String finalFileName = UUID.reandomUUID() + fileName.substring(fileName.lastIndexOf("."));
+			String path = session.getServletContext().getRealPath("photo") + File.separator + finalFileName;
+			files.transferTo(new File(path));
+		}
