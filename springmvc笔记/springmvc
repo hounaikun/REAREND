@@ -283,3 +283,99 @@
 			String path = session.getServletContext().getRealPath("photo") + File.separator + finalFileName;
 			files.transferTo(new File(path));
 		}
+19.拦截器：
+	springmvc也可以使用拦截器对请求进行拦截处理，用户可以自定义拦截器。
+	自定义拦截器实现HandlerInterceptor接口，也可以继承HandlerInterceptorAdapter适配器类
+		方法一、preHandle():业务处理器请求之前被调用，在该方法中对用户请求request进行处理
+		方法二、postHandle():业务处理器请求之后（ModelAndView已经获得，但是还没渲染，已经发给DispatcherServlet，但是DispatcherServlet还没向客户端返回响应）
+		方法三、afterCompletion:DispatcherServlet处理完所有请求后被调用
+	拦截器和过滤器的区别：	
+		看图。
+	SpringMVC.xml配置：
+	<mvc:interceptor>
+		//默认拦截所有请求
+		第一种方式：<bean class = "自定义拦截器全限定类名"></bean>
+		第二种方式（从ioc容器中拿，事先一定要有自定义拦截器的bean，可以通过注解扫描等方式）
+			<ref bean="beanId"/>
+		//设置自定义拦截方式
+		<mvc:interceptor>
+			//自定义拦截类
+			<bean></bean>
+			//拦截相对应请求
+			<mvc:mapping path=""/>
+			//不拦截相对应的请求
+			<mvc:exclude-mapping path=""/>
+		</mvc:interceptro>
+	</mvc:interceptor>
+	拦截器执行顺序：
+		第一个preHandle()
+		第二个preHandle()
+		第n个preHandle()
+		第n个postHandle()
+		第二个postHandle()
+		第一个postHandle()
+		故：preHandle()正向执行，postHandle()反向执行
+			当多个拦截器的preHandle()有不同的值时，返回true，执行下一个，返回false不执行下一个且把之前返回true的afterCompletion执行
+				第一个返回false、第二个返回false:只有第一个的preHandle()会执行
+				第一个返回true、第二个返回false：两个（全部）拦截器的preHandle()都会执行，但是（全部）postHandle都不会被执行，而afterCompletion只有第一个
+					（返回false之前的拦截器）会执行
+				第一个返回false、第二个返回true:只有第一个的preHandle()会执行
+		总结执行顺序:
+			preHandle按拦截器定义顺序调用
+			postHandler按拦截器定义逆序调用
+			afterCompletion按拦截器定义逆序调用
+			postHandler在拦截器链内所有拦截器返成功调用
+			afterCompletion只有preHandle返回true才调用
+20.异常处理
+	默认异常处理：default...
+	自定义异常处理：simple...(网上搜怎么配置)
+		在springMVC.xml配置：
+			<bean></bean>  
+21.自己总结springmvc运行流程
+	用户发送请求至前端控制器DispatcherServlet的url-pattern
+		判断：springmvc是否存在相对应的映射
+			木有：是否配置<mvc:default-servlet-handler/>
+				判断：
+					木有：浏览器：404，服务器：no mapping found for HTTP request with URI.. in DispacherServlet
+					有：目标资源
+			有：由HandlerMapping获取HandlerExecutionChain对象
+				获取HandlerAdapter对象
+				调用拦截器的preHandle()
+				调用目标Handler的目标方法得到ModelAndView对象
+					判断是否有异常：
+						有：由HandlerExceptionResolver组件处理异常，得到新的ModelAndView对象
+						木有：由ViewResolver组件根据传过来的ModelAndView对象（正常的ModelAndView/异常的ModelAndView）得到实际的View
+				调用拦截器的postHandle()
+				渲染视图
+				调用拦截器的afterCompletion()
+	源码：视频多看几遍。。。
+22.Spring和Springmvc整合
+	原理：通过contextServlet的监听器的初始化方法加载spring的配置文件。
+	实现：
+		spring默认有一个监听器ContextLoaderListener
+		在web.xml中配置
+			  <listener>
+			    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+			  </listener>
+			  //不加<context-param>默认找WEB-INFO下的spring的配置文件applicationContext.xml
+			  	加了就是自定义名称和位置
+			  <context-param>
+			    <param-name>contextConfigLocation</param-name>
+			    <param-value>classpath:spring.xml</param-value>
+			  </context-param>
+	bean被创建两次，因为spring配置文件和springmvc配置文件都由包扫描，怎么解决？
+		springmvc只扫描控制层，spring中通过包含或排除对所扫描的包进行指定
+23.标签执行顺序
+	由先及后
+	<context-param>
+	<listener>
+	<Filter>
+	<Servlet>
+24.spring和springmvc的关系
+	spring是父容器
+	springmvc是子容器
+	规定：子容器能够调用父容器的bean，而父容器不能够调用访问子容器的bean
+
+	springmvc               spring
+	cotroller---------service-------dao
+	
