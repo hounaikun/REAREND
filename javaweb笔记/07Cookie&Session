@@ -1,0 +1,103 @@
+一、Cookie
+	1.是什么？
+		Cookie是服务器通知客户端保存键值对的一种技术
+		客户端有了Cookie后，每次请求都发送给服务器
+		每个Cookie的大小不能超过4Kb
+	2.怎么创建？
+		//创建cookie对象
+		Cookie cookie = new Cookie("k1","v1");
+		// 设置 Cookie 一小时之后被删除。
+		cookie.setMaxAge(60 * 60); 
+		//通知客户端保存Cookie
+		response.addCookie(cookie);
+	3.服务器如何获取？
+		Cookie[] cookies = request.getCookies();
+	4.浏览器怎么查看 cookie？
+		谷歌：Application--storage
+		火狐：存储
+	5.Cookie 的生命控制？
+		setMaxAge()
+		正数，表示在指定的秒数后过期
+		负数，表示浏览器一关，Cookie 就会被删除（默认值是-1，表示关闭浏览器，Cookie就会消失）
+		零，表示马上删除 Cookie
+		cookie.setMaxAge(60 * 60); // 设置 Cookie 一小时之后被删除。
+		cookie.setMaxAge(0); // 表示马上删除，都不需要等待浏览器关闭
+	6.Cookie 有效路径 Path 的设置？
+		Cookie 的 path 属性可以有效的过滤哪些 Cookie 可以发送给服务器。哪些不发。
+		path 属性是通过请求的地址来进行有效的过滤。
+		// getContextPath() ===>>>> 得到工程路径
+		cookie.setPath( req.getContextPath() + "/abc" ); // ===>>>> 表示只用包含 /工程路径/abc 才可以会被发送给服务器
+
+二、Session
+	1.是什么？
+		Session就是一个接口（HttpSession）
+		Session就是会话；用来维护一个客户端（浏览器）和服务器之间关联的一种技术
+		每个客户端都有自己的一个Session会话
+		Session会话中，我们经常用来保存用户登录之后的信息
+	2.怎么创建？
+		//第一次调用：创建session会话
+		//之后调用：获取前面创建好的session会话
+		HttpSession session = request.getSession();
+		//判断session是不是刚被创建出来的
+		boolean bool = session.isNew();
+		//获取会话的唯一ID值
+		String id = session.getID();
+	3.Session 域数据的存储
+		session.setAttribute("","");
+		session.getAttribute("","");
+	4.Session 生命周期
+		//设置超时时间(秒)，过了时间session就会被销毁
+		//	值为正数的时候，设定 Session 的超时时长。
+		//	负数表示永不超时（极少使用）
+		session.setMaxInactiveInterval(int interval);
+		//获得超时时间
+		public int getMaxInactiveInterval();
+		//默认的超时时长是多少！
+		30 分钟。
+			/*因为在 Tomcat 服务器的配置文件 web.xml中默认有以下的配置，它就表示配置了当前 Tomcat 
+			服务器下所有的 Session 超时配置默认时长为：30 分钟。*/
+			<session-config>
+				<session-timeout>30</session-timeout>
+			</session-config>
+			/*你希望你的 web 工程，默认的 Session 的超时时长为其他时长。你可以在你自己的 
+			web.xml 配置文件中做以上相同的配置。就可以修改你的 web 工程所有 Seession 的默认超时时长*/
+		Session的超时？
+			指的是客户端两次请求的最大间隔时间
+		// 让 Session 会话马上超时
+		session.invalidate();
+	5.解决表单重复提交
+		表单重复提交有三种常见的情况：
+			一：提交完表单。服务器使用请求转来进行页面跳转。这个时候，用户按下功能键 F5，就会发起最后一次的请求。
+			造成表单重复提交问题。解决方法：使用重定向来进行跳转
+			二：用户正常提交服务器，但是由于网络延迟等原因，迟迟未收到服务器的响应，这个时候，用户以为提交失败，
+			就会着急，然后多点了几次提交操作，也会造成表单重复提交。
+			三：用户正常提交服务器。服务器也没有延迟，但是提交完成后，用户回退浏览器。重新提交。也会造成表单重复
+			提交。
+		解决：
+			谷歌 kaptcha 图片验证码的使用
+				谷歌验证码 kaptcha 使用步骤如下：
+					1、导入谷歌验证码的 jar 包
+					kaptcha-2.3.2.jar
+					2、在 web.xml 中去配置用于生成验证码的 Servlet 程序
+						<servlet>
+							<servlet-name>KaptchaServlet</servlet-name>
+							<servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+						</servlet>
+						<servlet-mapping>
+							<servlet-name>KaptchaServlet</servlet-name>
+							<url-pattern>/kaptcha.jpg</url-pattern>
+						</servlet-mapping>
+					3、在表单中使用 img 标签去显示验证码图片并使用它
+						<form action="http://localhost:8080/tmp/registServlet" method="get">
+							用户名：<input type="text" name="username" > <br>
+							验证码：<input type="text" style="width: 80px;" name="code">
+							<img src="http://localhost:8080/tmp/kaptcha.jpg" alt="" 
+								style="width: 100px; height: 28px;"> <br>
+							<input type="submit" value="登录">
+						</form>
+					4、在服务器获取谷歌生成的验证码和客户端发送过来的验证码比较使用。
+						网上搜！！！
+
+
+
+
