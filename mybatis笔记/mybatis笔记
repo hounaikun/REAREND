@@ -1,0 +1,130 @@
+导包：
+	<dependency>
+	  <groupId>org.mybatis</groupId>
+	  <artifactId>mybatis</artifactId>
+	  <version>x.x.x</version>
+	</dependency>
+	<dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.47</version>
+    </dependency>
+文档：
+	官网：https://mybatis.org/mybatis-3/zh/index.html
+	离线：
+
+一、全局配置文件
+	<?xml version="1.0" encoding="UTF-8" ?>
+	<!DOCTYPE configuration
+	        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+	<configuration>
+	    <!--
+	        mybatis可以使用properties来引入外部properties配置文件的内容
+	        resource：引入类路径下的资源
+	        url：引入网络路径或者磁盘路径下的资源
+	    -->
+	    <properties resource="mybatis-config.xml">
+		<!--<property name="" value=""/> 可以额外配置属性-->
+	    </properties>
+	    <!--
+	        settings 包含很多重要的设置项
+	        setting:用来设置每一个设置项
+	            name: 设置项名
+	            value：设置项取值
+
+	        mapUnderscoreToCamelCase:是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。
+	    -->
+	    <settings>
+	        <setting name="mapUnderscoreToCamelCase" value="true"/>
+	    </settings>
+
+	    <!--typeAliases:别名处理器，可以为我们的java类型起别名，别名不区分大小写-->
+	    <typeAliases>
+	        <!--1.typeAlias:为某个java类型起别名
+	                type:指定要起别名的类型全类名；默认别名就是类名小写
+	                alias:制定新的别名
+	        -->
+	        <!-- <typeAlias type="" alias=""/>-->
+	        <!--
+	            2。package:为某个包下的所有类批量起别名
+	                name:指定包名（为当前包以及下面所有的包后代的每一个类都起一个默认别名（类名小写））
+	        -->
+	        <!--<package name="com.kun.entity"/>-->
+	        <!--3.批量起别名的情况下，使用@Alias注解为某个类型指定新的别名-->
+	    </typeAliases>
+	    <!--类型处理器（typeHandlers）
+        MyBatis 在设置预处理语句（PreparedStatement）中的参数或从结果集中取出一个值时，
+          都会用类型处理器将获取到的值以合适的方式转换成 Java 类型。
+            类型处理器 	        Java 类型 	                JDBC 类型
+            BooleanTypeHandler 	java.lang.Boolean, boolean 	数据库兼容的 BOOLEAN
+            ByteTypeHandler 	java.lang.Byte, byte 	    数据库兼容的 NUMERIC 或 BYTE
+            ShortTypeHandler 	java.lang.Short, short 	    数据库兼容的 NUMERIC 或 SMALLINT
+            IntegerTypeHandler 	java.lang.Integer, int 	    数据库兼容的 NUMERIC 或 INTEGER
+            LongTypeHandler 	java.lang.Long, long 	    数据库兼容的 NUMERIC 或 BIGINT
+            ...
+	    -->	
+	    <typeHandlers>
+
+	    </typeHandlers>
+	    <!--
+	       environments:环境们，mybatis可以配置多种环境，default指定当前使用某种环境，可以达到快速切换环境
+	            environment: 配置一个具体的环境，必须有两个标签；id代表当前环境的唯一标识
+	                transactionManager:事务管理器；
+	                    type：事务管理器的类型；JDBC（JdbcTransactionFactory）| MANAGED
+	                                自定义事务管理器:实现TransactionFactory接口,type指定为全类名
+	                dataSource：数据源
+	                    type:数据源类型；UNPOOLED(UnpooledDataSourceFactory)
+	                                    |POOLED(PooledDataSourceFactory)
+	                                    |JNDI(JndiDataSourceFactory)
+	                       自定义数据源，实现DataSourceFactory接口，type是全类名
+
+	       -->
+	    <!--
+	    如果一个属性在不只一个地方进行了配置，那么，MyBatis 将按照下面的顺序来加载：
+	        首先读取在 properties 元素体内指定的属性。
+	        然后根据 properties 元素中的 resource 属性读取类路径下属性文件，或根据 url 属性指定的路径读取属性文件，
+	            并覆盖之前读取过的同名属性。
+	        最后读取作为方法参数传递的属性，并覆盖之前读取过的同名属性。
+	        因此，通过方法参数传递的属性具有最高优先级，resource/url 属性中指定的配置文件次之，
+	            最低优先级的则是 properties 元素中指定的属性。
+	    -->
+	    <environments default="development">
+	        <environment id="development">
+	            <transactionManager type="JDBC"/>
+	            <dataSource type="POOLED">
+	                <property name="driver" value="${driver}"/>
+	                <property name="url" value="${url}"/>
+	                <property name="username" value="${username}"/>
+	                <property name="password" value="${password}"/>
+	            </dataSource>
+	        </environment>
+	    </environments>
+	    <!--  mappers：将我们写好的sql映射文件XXXMapper.xml注册到全局配置文件  -->
+	    <mappers>
+	        <!--mapper:注册一个sql映射
+	            resource:引用类路径下的sql映射文件
+	            url：引用网络路径或者磁盘路径下的sql映射文件        
+	        -->
+	        <!--<mapper resource=""/>-->
+	        
+	        <!--
+	            注册接口
+	            class:引用（注册）接口
+	                1.sql映射文件，映射文件名必须和接口同名，并且放到与接口同一目录下
+	                2.没有sql映射文件，所有的sql都是利用注解写在接口上；
+	            推荐：
+	                比较重要的，复杂的Dao接口我们来写sql映射文件
+	                不重要，简单的Dao接口为了开发快速可以使用注解
+
+	            注意：如果接口和mapper文件不在同一个包下，那么扫描到的只有Mapper接口而已，为此还需要另外对Mapper.xml进行配置
+	        -->
+	        <!--mapper class=""/>-->
+	        
+	        <!--批量注册，也是接口扫描器，也需要接口和xml文件在同一个目录下
+	        	注意：src/main/java 在maven打包时不会打包其中不是源码的文件，所以xml文件不要放在java下，
+	        			要放在resource下，java和resource都是类路径，打包时会将两个文件内容合在一起
+	        	-->
+	        <package name="com.kun.dao"/>
+	    </mappers>
+	</configuration>
