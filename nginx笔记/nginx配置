@@ -43,7 +43,7 @@
 	7.2 查看nginx版本号
 		./nginx -v
 	7.3 启动nginx
-		./nginx
+		./nginx 或者 start nginx
 	7.4 关闭nginx
 		./nginx -s stop
 	7.5 重新加在nginx
