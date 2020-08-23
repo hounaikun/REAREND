@@ -814,10 +814,11 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --server.port=8087  --serv
 
   - ```java
     SpringFactoriesLoader.loadFactoryNames()
+        SpringFactoriesLoader原理解析：https://www.jianshu.com/p/49920e258206
     扫描所有jar包类路径下  META-INF/spring.factories
     把扫描到的这些文件的内容包装成properties对象
     从properties中获取到EnableAutoConfiguration.class类（类名）对应的值，然后把他们添加在容器中
-
+    
     ```
 
     ​
@@ -933,7 +934,8 @@ org.springframework.boot.autoconfigure.webservices.WebServicesAutoConfiguration
 
 ```java
 @Configuration   //表示这是一个配置类，以前编写的配置文件一样，也可以给容器中添加组件
-@EnableConfigurationProperties(HttpEncodingProperties.class)  //启动指定类的ConfigurationProperties功能；将配置文件中对应的值和HttpEncodingProperties绑定起来；并把HttpEncodingProperties加入到ioc容器中
+@EnableConfigurationProperties(HttpEncodingProperties.class)  //启动指定类的EnableConConfigurationProperties功能；将配置文件中对应的值和HttpEncodingProperties绑定起来；并把HttpEncodingProperties加入到ioc容器中;
+	//@EnableConfigurationProperties注解的作用是@ConfigurationProperties注解生效。如果只配置		@ConfigurationProperties注解，在IOC容器中是获取不到properties配置文件转化的bean的，当然在		@ConfigurationProperties加入注解的类上加@Component也可以使交于springboot管理。
 
 @ConditionalOnWebApplication //Spring底层@Conditional注解（Spring注解版），根据不同的条件，如果满足指定的条件，整个配置类里面的配置就会生效；    判断当前应用是否是web应用，如果是，当前配置类生效
 
@@ -1032,7 +1034,7 @@ xxxxProperties:封装配置文件中相关属性；
 
 我们怎么知道哪些自动配置类生效；
 
-**==我们可以通过启用  debug=true属性；来让控制台打印自动配置报告==**，这样我们就可以很方便的知道哪些自动配置类生效；
+**==我们可以通过启用  debug=true（配置文件中填写）属性；来让控制台打印自动配置报告==**，这样我们就可以很方便的知道哪些自动配置类生效；
 
 ```java
 =========================

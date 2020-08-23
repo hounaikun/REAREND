@@ -567,7 +567,7 @@
 	 *          AutowiredAnnotationBeanBeanPostProcessor:解析完成自动装配功能
 	 *
 	 *     @Autowired标的位置：构造器、参数、方法、属性：都是从容器中获取参数组件的值
-	 *          1.标注在方法位置：@Bean+方法参数；参数从容器中获取；默认不写@Autowired，效果是一样的。
+	 *          1.标注在方法位置：=@Bean+方法参数；参数从容器中获取；默认不写@Autowired，效果是一样的。
 	 *              //标注在方法上，Spring容器创建当前对象，就会调用此方法，完成赋值，
 	 *              //方法使用的参数，自定义类型的值从ioc容器中获取
 	 *              @Autowired
