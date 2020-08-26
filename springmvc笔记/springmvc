@@ -378,4 +378,6 @@
 
 	springmvc               spring
 	cotroller---------service-------dao
-	
+
+25.@ControllerAdvice全局异常处理
+	https://www.cnblogs.com/lenve/p/10748453.html
