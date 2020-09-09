@@ -467,9 +467,9 @@
 			问题：如果之前的master重启回来，会不会双master冲突？不会，回来之后成为slaver
 		一组sentinel能同时监控多个master
 21.Jedis
-
+	
 最终（面试）：
 		https://zhuanlan.zhihu.com/p/93515595
 		https://www.jianshu.com/p/65765dd10671
-	☆视频再看几遍。。。
+☆视频再看几遍。。。
 

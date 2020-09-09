@@ -1,0 +1,5 @@
+bin/bash的作用：
+	就表示启动容器后启动bash，docker中必须要保持一个进程的运行，要不然整个容器启动后就会马上
+	kill itself
+docker run -d容器运行不退出的方法：
+	docker run -d centos /bin/bash -c “while true;do echo hello docker;sleep 1;done”
