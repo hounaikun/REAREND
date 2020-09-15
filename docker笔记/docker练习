@@ -40,5 +40,5 @@
 19.以17添加的镜像先启动一个父容器dc01，在容器卷里面添加内容，以dc01为父容器创建dc02、dc03，在容器卷中分别添加内容
 20.查看数据是否共享
 21.dockerfile是什么？
-22.联系安装mysql、nginx、tomcat、redis、mq等。
+22.练习安装mysql、nginx、tomcat、redis、mq等。
 
