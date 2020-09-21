@@ -1,6 +1,8 @@
 package com.kun;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.*;
 
 /**
  * @description: <p></p>
@@ -45,6 +47,31 @@ class MyRunnable02 implements Runnable {
         }
     }
 }
+class MyCallable01 implements Callable<String>{
+    private int fibonacciCount;
+
+    public MyCallable01(int fibonacciCount) {
+        this.fibonacciCount = fibonacciCount;
+    }
+
+    @Override
+    public String call() throws Exception {
+        int[] fib = new int[this.fibonacciCount];
+        String result = "";
+        if(this.fibonacciCount < 1){
+            result = "传入数值错误！！！";
+        }else if(this.fibonacciCount == 1){
+            result = "[0]";
+        }else{
+            fib[0] = 0;fib[1] = 1;
+            for(int i =2;i<fib.length;i++){
+                fib[i] = fib[i-1] + fib[i-2];
+            }
+            result = Arrays.toString(fib);
+        }
+        return result;
+    }
+}
 public class RunnablePractise {
     public static void main(String[] args) {
 //        Thread thread01 = new Thread(new MyRunnable01());
@@ -54,11 +81,30 @@ public class RunnablePractise {
 //        Thread thread03 = new Thread(new MyRunnable01());
 //        thread03.start();
 
-        Thread thread04 = new Thread(new MyRunnable02(8));
-        thread04.start();
-        Thread thread05 = new Thread(new MyRunnable02(9));
-        thread05.start();
-        Thread thread06 = new Thread(new MyRunnable02(10));
-        thread06.start();
+//        Thread thread04 = new Thread(new MyRunnable02(8));
+//        thread04.start();
+//        Thread thread05 = new Thread(new MyRunnable02(9));
+//        thread05.start();
+//        Thread thread06 = new Thread(new MyRunnable02(10));
+//        thread06.start();
+
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        ArrayList<Future<String>> futures = new ArrayList<>();
+        for(int i =0;i<10;i++){
+            futures.add(executorService.submit(new MyCallable01(i)));
+        }
+        for(Future<String> fs : futures){
+            if(fs.isDone()){
+                try {
+                    System.out.println(fs.get());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } finally {
+                    executorService.shutdown();
+                }
+            }
+        }
     }
 }
