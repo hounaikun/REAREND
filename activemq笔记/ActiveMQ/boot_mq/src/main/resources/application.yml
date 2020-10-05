@@ -1,0 +1,12 @@
+spring:
+  activemq:
+    # activemq的broker的url
+    broker-url: tcp://121.199.70.188
+    # 连接activemq的broker所需的账号和密码
+    user: admin
+    password: admin
+  jms:
+    # 目的地是queue还是topic，false（默认) = queue , true = topic
+    pub-sub-domain: false
+# 自定义队列名称，只是个常量
+myqueue: boot-activemq-queue

@@ -467,7 +467,25 @@
 			问题：如果之前的master重启回来，会不会双master冲突？不会，回来之后成为slaver
 		一组sentinel能同时监控多个master
 21.Jedis
-	
+	21.1 引入依赖
+	     <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.7.1</version><!--版本号可根据实际情况填写-->
+         </dependency>
+         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.2</version>!--版本号可根据实际情况填写-->
+         </dependency>
+    21.2 测试连接
+    	public class TestPing {
+		    public static void main(String[] args) {
+		        Jedis jedis = new Jedis("127.0.0.1",6379);
+		        System.out.println(jedis.ping());
+		    }
+		}
+	21.3 事务
 最终（面试）：
 		https://zhuanlan.zhihu.com/p/93515595
 		https://www.jianshu.com/p/65765dd10671
