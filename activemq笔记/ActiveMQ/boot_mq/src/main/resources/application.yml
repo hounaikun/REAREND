@@ -1,7 +1,7 @@
 spring:
   activemq:
     # activemq的broker的url
-    broker-url: tcp://121.199.70.188
+    broker-url: tcp://121.199.70.188:61616
     # 连接activemq的broker所需的账号和密码
     user: admin
     password: admin
