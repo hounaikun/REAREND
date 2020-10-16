@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!--直接释放无需经过SpringSecurity过滤器的静态资源-->
+    <security:http pattern="/css/**" security="none"/>
+    <security:http pattern="/img/**" security="none"/>
+    <security:http pattern="/plugins/**" security="none"/>
+    <security:http pattern="/failer.jsp" security="none"/>
+    <security:http pattern="/favicon.ico" security="none"/>
+
+    <!--设置可以用spring的el表达式配置Spring Security并自动生成对应配置组件（过滤器）-->
+    <security:http auto-config="true" use-expressions="true">
+        <!--指定login.jsp页面可以被匿名访问,就是拦截的时候排除登陆页面-->
+        <security:intercept-url pattern="/login.jsp" access="permitAll()"/>
+        <!--使用spring的el表达式来指定项目所有资源访问都必须有ROLE_USER或ROLE_ADMIN角色-->
+        <security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+        <!--指定自定义的认证页面
+             login-processing-url: 处理器地址，就是登录的url，注意不是我们自己写的，是spring security默认的，/login
+             default-target-url： 认证成功时候，默认前往的地址，注意是默认，如果我们有强制跳转到其它页面，此配置失效。
+             authentication-failure-url: 认证失败跳转的页面
+             username-parameter：当自定以登录界面的用户名input的name不是security默认的name(username)时，在这边需要标识，
+                                    这个时候security才会接受值并去认证
+             password-parameter：当自定以登录界面的密码input的name不是security默认的name(password)时，在这边需要标识，
+                                    这个时候security才会接受值并去认证
+        -->
+        <security:form-login login-page="/login.jsp"
+                             login-processing-url="/login"
+                             default-target-url="/index.jsp"
+                             authentication-failure-url="/failer.jsp"
+                             username-parameter="username"
+                             password-parameter="password"/>
+        <!--指定退出登录后跳转的页面-->
+        <security:logout logout-url="/logout"
+                         logout-success-url="/login.jsp"/>
+    </security:http>
+
+    <!--设置Spring Security认证用户信息的来源-->
+    <!--spring security默认的认证必须是加密的，加上{noop}表示不加密认证（security 低版本实现好像不管用，当前项目版本可以用）-->
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="user" password="{noop}user"
+                               authorities="ROLE_USER"/>
+                <security:user name="admin" password="{noop}admin"
+                               authorities="ROLE_ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+</beans>
