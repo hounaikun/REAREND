@@ -1,0 +1,12 @@
+报错：
+Problem: package docker-ce-3:19.03.8-3.el7.x86_64 requires containerd.io >= 1.2.2-3, but none of the providers can be installed
+解决办法：
+	https://blog.csdn.net/shana_8/article/details/105190368
+	主要是（yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo）
+
+安装Docker：
+https://www.jianshu.com/p/9c96ea8e6f41
+注意：数据源改成阿里云的
+
+配置阿里云镜像加速：
+https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors

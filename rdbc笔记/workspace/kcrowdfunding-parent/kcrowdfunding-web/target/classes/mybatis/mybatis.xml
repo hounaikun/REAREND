@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+        settings 包含很多重要的设置项
+        setting:用来设置每一个设置项
+            name: 设置项名
+            value：设置项取值
+
+        mapUnderscoreToCamelCase:是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。
+    -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!--typeAliases:别名处理器，可以为我们的java类型起别名，别名不区分大小写-->
+    <typeAliases>
+        <!--1.typeAlias:为某个java类型起别名
+                type:指定要起别名的类型全类名；默认别名就是类名小写
+                alias:制定新的别名
+        -->
+        <!-- <typeAlias type="" alias=""/>-->
+        <!--
+            2。package:为某个包下的所有类批量起别名
+                name:指定包名（为当前包以及下面所有的包后代的每一个类都起一个默认别名（类名小写））
+        -->
+        <!--<package name="com.kun.entity"/>-->
+        <!--3.批量起别名的情况下，使用@Alias注解为某个类型指定新的别名-->
+    </typeAliases>
+</configuration>
