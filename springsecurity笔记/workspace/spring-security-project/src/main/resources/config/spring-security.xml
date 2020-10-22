@@ -30,7 +30,8 @@
         <security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
         <!--指定自定义的认证页面
              login-processing-url: 处理器地址，就是登录的url，注意不是我们自己写的，是spring security默认的，/login
-             default-target-url： 认证成功时候，默认前往的地址，注意是默认，如果我们有强制跳转到其它页面，此配置失效。
+             default-target-url： 认证成功时候，默认前往的地址，注意是默认，如果我们是访问其他页面的时候被强制登陆，那么
+                                    认证成功后还是会去我们访问的页面，此配置失效。
              authentication-failure-url: 认证失败跳转的页面
              username-parameter：当自定以登录界面的用户名input的name不是security默认的name(username)时，在这边需要标识，
                                     这个时候security才会接受值并去认证
@@ -51,13 +52,7 @@
     <!--设置Spring Security认证用户信息的来源-->
     <!--spring security默认的认证必须是加密的，加上{noop}表示不加密认证（security 低版本实现好像不管用，当前项目版本可以用）-->
     <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="user" password="{noop}user"
-                               authorities="ROLE_USER"/>
-                <security:user name="admin" password="{noop}admin"
-                               authorities="ROLE_ADMIN"/>
-            </security:user-service>
+        <security:authentication-provider user-service-ref="userServiceImpl">
         </security:authentication-provider>
     </security:authentication-manager>
 
