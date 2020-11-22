@@ -2,10 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-4.0.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
@@ -27,4 +30,13 @@
     <!--能支持springmvc更高级的一些功能，比如：JSR303校验、快捷的ajax、映射动态请求、jackson起作用-->
     <mvc:annotation-driven/>
 
+    <!--
+        开启权限控制注解支持
+        jsr250-annotations="enabled"表示支持jsr250-api的注解，需要jsr250-api的jar包
+        pre-post-annotations="enabled"表示支持spring表达式注解
+        secured-annotations="enabled"这才是SpringSecurity提供的注解
+    -->
+    <security:global-method-security jsr250-annotations="enabled"
+                                     pre-post-annotations="enabled"
+                                     secured-annotations="enabled"/>
 </beans>

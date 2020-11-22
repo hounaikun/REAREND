@@ -1,0 +1,22 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri:  https://github.com/hounaikun/sprincloud-config.git #git地址
+         # search-paths:
+          #  - springcloud-config #搜索目录名
+          username: hounaikun
+          password: gaokao201667
+      label: master #分支
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:7001/eureka
+

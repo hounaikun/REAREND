@@ -47,12 +47,21 @@
         <!--指定退出登录后跳转的页面-->
         <security:logout logout-url="/logout"
                          logout-success-url="/login.jsp"/>
+
+        <!--开启remember me过滤器，设置token存储时间为60秒-->
+        <security:remember-me token-validity-seconds="60"/>
+
     </security:http>
 
+    <!--加密对象-->
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </bean>
     <!--设置Spring Security认证用户信息的来源-->
     <!--spring security默认的认证必须是加密的，加上{noop}表示不加密认证（security 低版本实现好像不管用，当前项目版本可以用）-->
     <security:authentication-manager>
         <security:authentication-provider user-service-ref="userServiceImpl">
+            <!--指定认证使用的加密对象，如果加密对象就叫passwordEncoder，这行代码不用输入，默认添加-->
+            <security:password-encoder ref="passwordEncoder"/>
         </security:authentication-provider>
     </security:authentication-manager>
 
