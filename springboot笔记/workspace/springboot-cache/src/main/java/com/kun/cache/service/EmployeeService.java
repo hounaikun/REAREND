@@ -63,7 +63,7 @@ public class EmployeeService {
      *      cacheNames/value：指定缓存组件的名字;将方法的返回结果放在哪个缓存中，是数组的方式，可以指定多个缓存；
      *
      *      key：缓存数据使用的key；可以用它来指定。默认是使用方法参数的值  1-方法的返回值
-     *              编写SpEL； #i d;参数id的值   #a0  #p0  #root.args[0]
+     *              编写SpEL； #id;参数id的值   #a0  #p0  #root.args[0]
      *              getEmp[2]
      *
      *      keyGenerator：key的生成器；可以自己指定key的生成器的组件id
@@ -110,7 +110,7 @@ public class EmployeeService {
      *          key = "#employee.id":使用传入的参数的员工id；
      *          key = "#result.id"：使用返回后的id
      *             @Cacheable的key是不能用#result
-     *      为什么是没更新前的？【1号员工没有在缓存中更新】
+     *      为什么是没更新前的？【1号员工没有在缓存中更新】,key要一样
      *
      */
     //@CachePut(/*value = "emp",*/key = "#result.id")

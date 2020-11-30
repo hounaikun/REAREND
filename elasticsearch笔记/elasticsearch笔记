@@ -1,0 +1,12 @@
+一、安装
+docker pull elasticsearch
+docker run -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -d -p 9200:9200 -p 9300:9300 --name ES01 镜像id
+9200 web通信端口 9300 分布式elasticsearch个节点之间同通信端口
+二、防火墙开放端口
+systemctl status firewalld 查看防火墙状态（是否启动）
+firewall-cmd --list-port 查看防火墙开放的端口
+firewall-cmd --zone=public --add-port=9300/tcp --permanent 开放9300端口
+firewall-cmd --zone=public --add-port=9200/tcp --permanent 开放9200端口 
+firewall-cmd --reload 使配置生效
+firewall-cmd --query-port=9200/tcp 查看9200是否开放
+阿里云开放端口

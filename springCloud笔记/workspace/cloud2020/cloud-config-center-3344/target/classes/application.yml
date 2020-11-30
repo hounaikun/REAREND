@@ -7,16 +7,24 @@ spring:
     config:
       server:
         git:
-          uri:  https://github.com/hounaikun/sprincloud-config.git #git地址
+          uri: https://github.com/hounaikun/sprincloud-config #git仓库的地址,就是https去掉.git
          # search-paths:
           #  - springcloud-config #搜索目录名
-          username: hounaikun
-          password: gaokao201667
       label: master #分支
-
+      # 私有库需要用户名，密码
+  rabbitmq:
+    host: 121.199.70.188
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:
     service-url:
       defaultZone:  http://localhost:7001/eureka
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'

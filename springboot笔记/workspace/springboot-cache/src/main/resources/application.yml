@@ -3,6 +3,8 @@ spring:
     url: jdbc:mysql://121.199.70.188:3306/spring_cache
     username: root
     password: 123456
+  redis:
+    host: 121.199.70.188
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
@@ -12,3 +14,4 @@ logging:
       kun:
         cache:
           mapper: debug
+debug: true

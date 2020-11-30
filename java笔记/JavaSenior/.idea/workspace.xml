@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="27603167-5929-490a-919a-227051098ea8" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+    <option name="PARALLEL_COMPILATION" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="module-info" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>keySet</find>
+    </findStrings>
+  </component>
+  <component name="ProjectId" id="1kuL1PcZw6z5zqBUYPjrwkvp8fF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551953006933" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="debugger.dataViews.javascript" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.atguigu.java" />
+      <recent name="com.atguigu.java1" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace_idea1\JavaSenior\day12\src\com\atguigu\java2" />
+      <recent name="D:\workspace_idea1\JavaSenior\day10" />
+      <recent name="D:\workspace_idea1\JavaSenior\day10\libs" />
+      <recent name="D:\workspace_idea1\JavaSenior\day10\src\com\atguigu\java" />
+      <recent name="D:\workspace_idea1\JavaSenior\day09\src\com\atguigu\exer" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.Java11Test.test2">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Java10Test.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.java1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.java1" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.java1.Java10Test" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Java10Test.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.java1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.java1" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.java1.Java10Test" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Java10Test.test5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.java1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.java1" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.java1.Java10Test" />
+      <option name="METHOD_NAME" value="test5" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Java11Test.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.java2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.java2" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.java2.Java11Test" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Java11Test.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.java2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.java2" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.java2.Java11Test" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.Java10Test.test1" />
+      <item itemvalue="JUnit.Java10Test.test2" />
+      <item itemvalue="JUnit.Java10Test.test5" />
+      <item itemvalue="JUnit.Java11Test.test1" />
+      <item itemvalue="JUnit.Java11Test.test2" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.Java11Test.test2" />
+        <item itemvalue="JUnit.Java11Test.test1" />
+        <item itemvalue="JUnit.Java10Test.test5" />
+        <item itemvalue="JUnit.Java10Test.test2" />
+        <item itemvalue="JUnit.Java10Test.test1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="27603167-5929-490a-919a-227051098ea8" name="Default" comment="" />
+      <created>1550022137055</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550022137055</updated>
+      <workItem from="1550022139907" duration="3028000" />
+      <workItem from="1550025187231" duration="1324000" />
+      <workItem from="1550026774872" duration="13063000" />
+      <workItem from="1550052034776" duration="1113000" />
+      <workItem from="1550152562856" duration="974000" />
+      <workItem from="1550190749329" duration="13455000" />
+      <workItem from="1550212332549" duration="14180000" />
+      <workItem from="1550241615684" duration="2611000" />
+      <workItem from="1550276528008" duration="21608000" />
+      <workItem from="1550392425013" duration="24000" />
+      <workItem from="1550413087858" duration="2684000" />
+      <workItem from="1550449926644" duration="24728000" />
+      <workItem from="1550500665999" duration="2141000" />
+      <workItem from="1550506838022" duration="689000" />
+      <workItem from="1550536646491" duration="23600000" />
+      <workItem from="1550562064922" duration="94000" />
+      <workItem from="1550562183394" duration="1454000" />
+      <workItem from="1550546658403" duration="330000" />
+      <workItem from="1550546402655" duration="460000" />
+      <workItem from="1550585752436" duration="2921000" />
+      <workItem from="1550622963506" duration="12921000" />
+      <workItem from="1550643068019" duration="11927000" />
+      <workItem from="1550675540282" duration="1265000" />
+      <workItem from="1550741028924" duration="4924000" />
+      <workItem from="1550768332215" duration="12000" />
+      <workItem from="1550769263796" duration="1337000" />
+      <workItem from="1550794894658" duration="22482000" />
+      <workItem from="1550847740138" duration="1927000" />
+      <workItem from="1550881837828" duration="11767000" />
+      <workItem from="1550898707874" duration="10936000" />
+      <workItem from="1550915022116" duration="1198000" />
+      <workItem from="1550935696151" duration="14000" />
+      <workItem from="1551029649563" duration="1171000" />
+      <workItem from="1551053870981" duration="26220000" />
+      <workItem from="1551101752348" duration="2485000" />
+      <workItem from="1551118421461" duration="7000" />
+      <workItem from="1551140954405" duration="11235000" />
+      <workItem from="1551161334872" duration="11256000" />
+      <workItem from="1551187974891" duration="4001000" />
+      <workItem from="1551200829730" duration="134000" />
+      <workItem from="1551227685398" duration="23333000" />
+      <workItem from="1551345830960" duration="2576000" />
+      <workItem from="1551400263276" duration="8850000" />
+      <workItem from="1551418680048" duration="17128000" />
+      <workItem from="1551591005605" duration="789000" />
+      <workItem from="1551688949961" duration="9000" />
+      <workItem from="1551879798934" duration="3918000" />
+      <workItem from="1551885362972" duration="96000" />
+      <workItem from="1551899911189" duration="34000" />
+      <workItem from="1551922082184" duration="305000" />
+      <workItem from="1551923438451" duration="7785000" />
+      <workItem from="1551938171643" duration="14303000" />
+      <workItem from="1606545315069" duration="1807000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Java11Test_test1 - 2019.03.07 at 17h 12m 37s.xml">
+      <configuration name="Java11Test.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java11Test_test1 - 2019.03.07 at 17h 13m 11s.xml">
+      <configuration name="Java11Test.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java11Test_test1 - 2019.03.07 at 17h 14m 59s.xml">
+      <configuration name="Java11Test.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java11Test_test1 - 2019.03.07 at 17h 15m 36s.xml">
+      <configuration name="Java11Test.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java11Test_test1 - 2019.03.07 at 17h 15m 53s.xml">
+      <configuration name="Java11Test.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java11Test_test2 - 2019.03.07 at 17h 20m 15s.xml">
+      <configuration name="Java11Test.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java11Test_test2 - 2019.03.07 at 17h 21m 25s.xml">
+      <configuration name="Java11Test.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java11Test_test2 - 2019.03.07 at 17h 22m 01s.xml">
+      <configuration name="Java11Test.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java11Test_test2 - 2019.03.07 at 17h 25m 56s.xml">
+      <configuration name="Java11Test.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java11Test_test2 - 2019.03.07 at 17h 26m 20s.xml">
+      <configuration name="Java11Test.test2" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="488" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606545478193">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="488" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1606545478193" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1606545665453">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1606545665453" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/day04/src/com/atguigu/java/IDEADebug.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/day04/src/com/atguigu/java/IDEADebug.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/day04/src/com/atguigu/java/IDEADebug.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

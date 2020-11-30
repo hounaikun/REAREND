@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6702998f-46f7-43b8-b36c-5a621c8a8377" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cloud2020/seata-order-service2001/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud2020/seata-order-service2001/src/main/java/com/kun/springcloud/domain/CommonResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud2020/seata-order-service2001/src/main/java/com/kun/springcloud/domain/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud2020/seata-order-service2001/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/10.ae5b751e.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/10.f25ef528cec76c3ced79.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/11.75b56346ed2db2849ee4.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/12-aeeea4bedf10f2a12c0d50d626951489.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/12.9f0bd644.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/12.eb49efa92f6ab9adcbd5.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/12210d77-527d-4bef-920d-358de424cb47" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/13-394c31a9cb492fcb39c27422ca7d2815.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/13.9226e3ca.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/13.dc4335a28f6664933e12.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/15607355-2c578fec9364e722" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-003f1490e22b5686.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-01df28d4af267832.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-05c7d3aed5bbe824.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-06f47274161a0b55.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-089e022efd98f3e1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-089e022efd98f3e1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-0a54bba5643ba49e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-1297a4120ade44fb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-14bcf2e2d9f62aab.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-1a5824a26b89ce1d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-1e0d46a5918f51fe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-2ad646bc62af2c25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-2ad646bc62af2c25.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-2dfda2e8eda1b4fc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-2eb335cb6a43398e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-34ab464b43a477a9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-3cb99f78096dbaef.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-4ab45b041f1faf9a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-530c4ac33f2f7d69.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-5374f755138d77c0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-5593e39e4014ee2c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-5593e39e4014ee2c.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-57cda1edbe53165d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-590a65409f9d19c8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-5ef641b43888aa3b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-6888473214d54b1c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-6a81b75b82420c8b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-6fd0f8d22d3fabd1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-7b5a83bfe572f2bf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-7b5bc5f595729244.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-7e02d770e395b1d7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-8de9b57175a00f89.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-8e6d630532eec8c0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-93f0c6e6e8aab06e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-948aba9cffa1a3a6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-94c85acaef08b0c5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-9aade2e804bfeef4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-9c41880511c88b22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-9c533da3156f6401.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-9c533da3156f6401.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-9ca0843a488ecf34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-9fe2c04780623f56.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-a0031db18332af78.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-afffce4a9b6444cf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-b0778a9847806d6d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-b0845da21349e1f6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-b1a367f7c055d674.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-b1f6713926d2cf78.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-b1f6713926d2cf78.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-b29cde71153ab1d4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-b5cc423e11e56a73.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-bbfc105abc9eb903.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-bffae479772a292c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-c20bee9b801edc2b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-c263a38e38e74762.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-c7a0af7ac75d8eab.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-cd303f7860abfb58.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-d4d4e935cbd31de1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-e2e00631c18bca65.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-e5e930285204c985.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-ebac19c4694f93d0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-f0039811f9a672ac.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-f1ff8af5c79f539e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-f28e6a372fb0347a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-f28e6a372fb0347a.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-f28edda487f0cb21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-f542a164da7baf68.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-f58de20bba51f027.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-f6454b07bb8aecc9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-f66555f3de62e1c1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-fa5f6e560fca5e80.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/18792147-fabf6c441e2b2ff9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/5130381-57a1d89cefb03ec3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/6dac1037-c76a-4f4f-9414-4f62fb50abb2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/75aa89c3-66e9-47d0-af42-78f3091b9904.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/[slug].js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/_app.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/analytics.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/b4853dc7-5c16-4875-a2cd-7cf764bbd934" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/cafcf54d-8045-4526-9377-c711bf972ae4(1).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/cafcf54d-8045-4526-9377-c711bf972ae4(2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/cafcf54d-8045-4526-9377-c711bf972ae4(3).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/cafcf54d-8045-4526-9377-c711bf972ae4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/cm.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/commons.ca594793025948930e03.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/commons.e4fbccfe.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/edbeb15e-d6e9-4159-b255-d9cea92a1906" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/hm.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/main-fd6a3977c507da64c9b7.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/polyfills-6f63874b7f93cc8cfe44.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/styles.4eb5917714db060a5a06.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/styles.ea52ad57.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../elasticsearch/ElasticSearch的概述和使用 - 简书_files/webpack-ad03007e443a25fa4d15.js.下载" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud2020/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud2020/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../springboot笔记/workspace/springboot-cache/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../springboot笔记/workspace/springboot-cache/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../springboot笔记/workspace/springboot-cache/src/main/java/com/kun/cache/SpringbootCacheApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../springboot笔记/workspace/springboot-cache/src/main/java/com/kun/cache/SpringbootCacheApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../springboot笔记/workspace/springboot-cache/src/main/java/com/kun/cache/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../springboot笔记/workspace/springboot-cache/src/main/java/com/kun/cache/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../springboot笔记/workspace/springboot-cache/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../springboot笔记/workspace/springboot-cache/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../springboot笔记/workspace/springboot-cache/src/test/java/com/kun/cache/SpringbootCacheApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../springboot笔记/workspace/springboot-cache/src/test/java/com/kun/cache/SpringbootCacheApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1kx2IpY67kI0IzyHquPnrR8vk11" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cloud2020" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6702998f-46f7-43b8-b36c-5a621c8a8377" name="Default Changelist" comment="" />
+      <created>1606627844228</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606627844228</updated>
+      <workItem from="1606627845570" duration="64000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1606627908275">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1606627908275" />
+  </component>
+</project>
