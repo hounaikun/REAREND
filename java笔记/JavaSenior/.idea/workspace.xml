@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27603167-5929-490a-919a-227051098ea8" name="Default" comment="" />
+    <list default="true" id="27603167-5929-490a-919a-227051098ea8" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../../spring笔记/spring-@Transaction.md" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +45,11 @@
       <find>keySet</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="ProjectId" id="1kuL1PcZw6z5zqBUYPjrwkvp8fF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -283,6 +289,7 @@
       <workItem from="1551923438451" duration="7785000" />
       <workItem from="1551938171643" duration="14303000" />
       <workItem from="1606545315069" duration="1807000" />
+      <workItem from="1606829250028" duration="1056000" />
     </task>
     <servers />
   </component>
@@ -322,6 +329,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Project_Structure" timestamp="1606829520477">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1606829520477" />
     <state x="488" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606545478193">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -330,6 +341,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1606545665453" />
+    <state x="28" y="36" key="new project wizard" timestamp="1606832275178">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="28" y="36" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1606832275178" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
