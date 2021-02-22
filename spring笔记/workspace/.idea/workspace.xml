@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9cb4895e-4ce4-453a-a41c-b3d098e4dc90" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../java笔记/ThreadSourceCode/src/com/juc/Five_线程间定制化通用通信/ThreadOrderAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java笔记/ThreadSourceCode/src/com/juc/Seven_JUC强大的辅助类/CountDownLatchDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java笔记/ThreadSourceCode/src/com/juc/Seven_JUC强大的辅助类/CyclicBarrierDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java笔记/ThreadSourceCode/src/com/juc/Seven_JUC强大的辅助类/SemaphoreDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java笔记/ThreadSourceCode/src/com/juc/Six_Callable接口/CallableTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java笔记/ThreadSourceCode/src/com/juc/four_线程间通信/Lockk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java笔记/ThreadSourceCode/src/com/juc/four_线程间通信/Synchro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java笔记/ThreadSourceCode/out/production/ThreadSourceCode/com/kun/DualSync.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../java笔记/ThreadSourceCode/out/production/ThreadSourceCode/com/kun/DualSync.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1nF76P6yd8LIpAtH5Rb13u7ceff" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="D:/tmp/bysj/afcrowdfunding-admin-by" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9cb4895e-4ce4-453a-a41c-b3d098e4dc90" name="Default Changelist" comment="" />
+      <created>1610973808951</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610973808951</updated>
+      <workItem from="1610973810253" duration="7000" />
+      <workItem from="1610973849483" duration="65000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1610973913011">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1610973913011" />
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1610973849028">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1610973849028" />
+  </component>
+</project>

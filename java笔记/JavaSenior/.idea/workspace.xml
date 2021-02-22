@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27603167-5929-490a-919a-227051098ea8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../spring笔记/spring-@Transaction.md" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThreadSourceCode/src/com/juc/Five_线程间定制化通用通信/ThreadOrderAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThreadSourceCode/src/com/juc/four_线程间通信/Lockk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThreadSourceCode/src/com/juc/four_线程间通信/Synchro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThreadSourceCode/out/production/ThreadSourceCode/com/kun/DualSync.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ThreadSourceCode/out/production/ThreadSourceCode/com/kun/DualSync.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +68,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551953006933" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../juc" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -86,7 +90,7 @@
       <recent name="D:\workspace_idea1\JavaSenior\day09\src\com\atguigu\exer" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Java11Test.test2">
+  <component name="RunManager" selected="JUnit.IteratorTest.test3">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -99,17 +103,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Java10Test.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day13" />
+    <configuration name="IteratorTest.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day06" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.atguigu.java1.*" />
+          <option name="PATTERN" value="com.atguigu.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.atguigu.java1" />
-      <option name="MAIN_CLASS_NAME" value="com.atguigu.java1.Java10Test" />
-      <option name="METHOD_NAME" value="test1" />
+      <option name="PACKAGE_NAME" value="com.atguigu.java" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.java.IteratorTest" />
+      <option name="METHOD_NAME" value="test3" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -210,19 +214,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.Java10Test.test1" />
       <item itemvalue="JUnit.Java10Test.test2" />
       <item itemvalue="JUnit.Java10Test.test5" />
       <item itemvalue="JUnit.Java11Test.test1" />
       <item itemvalue="JUnit.Java11Test.test2" />
+      <item itemvalue="JUnit.IteratorTest.test3" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IteratorTest.test3" />
         <item itemvalue="JUnit.Java11Test.test2" />
         <item itemvalue="JUnit.Java11Test.test1" />
         <item itemvalue="JUnit.Java10Test.test5" />
         <item itemvalue="JUnit.Java10Test.test2" />
-        <item itemvalue="JUnit.Java10Test.test1" />
       </list>
     </recent_temporary>
   </component>
@@ -290,57 +294,60 @@
       <workItem from="1551938171643" duration="14303000" />
       <workItem from="1606545315069" duration="1807000" />
       <workItem from="1606829250028" duration="1056000" />
+      <workItem from="1609668741534" duration="1030000" />
+      <workItem from="1609670279937" duration="598000" />
+      <workItem from="1610284747132" duration="18000" />
+      <workItem from="1610295904735" duration="1143000" />
+      <workItem from="1610378890051" duration="687000" />
+      <workItem from="1610550952930" duration="1000000" />
+      <workItem from="1610553311874" duration="27000" />
     </task>
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="Java11Test_test1 - 2019.03.07 at 17h 12m 37s.xml">
-      <configuration name="Java11Test.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Java11Test_test1 - 2019.03.07 at 17h 13m 11s.xml">
-      <configuration name="Java11Test.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Java11Test_test1 - 2019.03.07 at 17h 14m 59s.xml">
-      <configuration name="Java11Test.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Java11Test_test1 - 2019.03.07 at 17h 15m 36s.xml">
-      <configuration name="Java11Test.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Java11Test_test1 - 2019.03.07 at 17h 15m 53s.xml">
-      <configuration name="Java11Test.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Java11Test_test2 - 2019.03.07 at 17h 20m 15s.xml">
-      <configuration name="Java11Test.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Java11Test_test2 - 2019.03.07 at 17h 21m 25s.xml">
-      <configuration name="Java11Test.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Java11Test_test2 - 2019.03.07 at 17h 22m 01s.xml">
-      <configuration name="Java11Test.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Java11Test_test2 - 2019.03.07 at 17h 25m 56s.xml">
-      <configuration name="Java11Test.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Java11Test_test2 - 2019.03.07 at 17h 26m 20s.xml">
-      <configuration name="Java11Test.test2" configurationId="JUnit" />
-    </history-entry>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="233" y="0" key="#Project_Structure" timestamp="1606829520477">
+    <state x="233" y="0" key="#Project_Structure" timestamp="1609668753798">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1606829520477" />
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1609668753798" />
     <state x="488" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606545478193">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="488" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1606545478193" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1610553335739">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1610553335739" />
+    <state width="1237" height="224" key="GridCell.Tab.0.bottom" timestamp="1610297048126">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="224" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1610297048126" />
+    <state width="1237" height="224" key="GridCell.Tab.0.center" timestamp="1610297048126">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="224" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1610297048126" />
+    <state width="1237" height="224" key="GridCell.Tab.0.left" timestamp="1610297048126">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="224" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1610297048126" />
+    <state width="1237" height="224" key="GridCell.Tab.0.right" timestamp="1610297048126">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="224" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1610297048126" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1606545665453">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1606545665453" />
+    <state x="362" y="81" width="558" height="524" key="StructurePopup" timestamp="1610551482155">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="362" y="81" width="558" height="524" key="StructurePopup/0.0.1280.680@0.0.1280.680" timestamp="1610551482155" />
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1610553325571">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1610553325571" />
     <state x="28" y="36" key="new project wizard" timestamp="1606832275178">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
