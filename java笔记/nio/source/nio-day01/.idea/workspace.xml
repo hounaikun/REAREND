@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="092825d6-8a23-4b65-bfef-ae6e4eef24b3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core_20201128141138.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_20201128141140.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_20201128141140.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/atguigu/nio/TestBuffer_20201128141136.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/atguigu/nio/TestChannel_20201128141140.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio-day02/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio-day02/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio-day02/_20201128141137.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio-day02/_20201128141138.project" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$USER_HOME$/Documents/SoftwareZip/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="C:\Users\kuen\Documents\SoftwareZip\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1opXveQ3SzgntgX4frPkmkdMx9t" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.5213549" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="092825d6-8a23-4b65-bfef-ae6e4eef24b3" name="Default Changelist" comment="" />
+      <created>1613984737480</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613984737480</updated>
+      <workItem from="1613984738723" duration="98000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="397" y="210" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1613984758304">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="397" y="210" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1613984758304" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1613984835552">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1613984835552" />
+    <state x="349" y="234" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1613984788590">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="349" y="234" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1613984788590" />
+  </component>
+</project>

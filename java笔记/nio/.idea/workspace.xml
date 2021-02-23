@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="281a91f2-f0bb-4fef-b04e-2c342b0d2fc2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/source/nio-day01/src/com/atguigu/nio/TestBuffer2021.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day01/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day01/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day01/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day01/.settings/org.eclipse.jdt.core_20201128141138.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day01/_20201128141140.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day01/_20201128141140.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day01/src/com/atguigu/nio/TestBuffer_20201128141136.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day01/src/com/atguigu/nio/TestChannel_20201128141140.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day02/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day02/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day02/_20201128141137.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day02/_20201128141138.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day02/src/com/atguigu/nio/TestBlockingNIO_20201128141137.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day02/src/com/atguigu/nio/TestNIO_2_20201128141143.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day02/src/com/atguigu/nio/TestNonBlockingNIO2_20201128141143.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day02/src/com/atguigu/nio/TestNonBlockingNIO_20201128141138.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day02/src/com/atguigu/nio/TestPipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/nio-day02/src/com/atguigu/nio/TestPipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/nio-day02/src/com/atguigu/nio/TestPipe_20201128141138.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$USER_HOME$/Documents/SoftwareZip/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="C:\Users\kuen\Documents\SoftwareZip\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1opY8B4JMlHZRtNjI8PCPkzhSSB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaSenior" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.5213549" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RunManager" selected="JUnit.TestNonBlockingNIO">
+    <configuration name="TestPipe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.nio.TestPipe" />
+      <module name="nio" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.nio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestNonBlockingNIO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="nio" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.nio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.nio" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.nio.TestNonBlockingNIO" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestNonBlockingNIO2.send" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="nio" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.nio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.nio" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.nio.TestNonBlockingNIO2" />
+      <option name="METHOD_NAME" value="send" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestNonBlockingNIO.client" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="nio" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.nio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.nio" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.nio.TestNonBlockingNIO" />
+      <option name="METHOD_NAME" value="client" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestNonBlockingNIO.server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="nio" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.nio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.nio" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.nio.TestNonBlockingNIO" />
+      <option name="METHOD_NAME" value="server" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestNonBlockingNIO" />
+        <item itemvalue="JUnit.TestNonBlockingNIO.server" />
+        <item itemvalue="JUnit.TestNonBlockingNIO.client" />
+        <item itemvalue="Application.TestPipe" />
+        <item itemvalue="JUnit.TestNonBlockingNIO2.send" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="281a91f2-f0bb-4fef-b04e-2c342b0d2fc2" name="Default Changelist" comment="" />
+      <created>1613984836652</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613984836652</updated>
+      <workItem from="1613984837903" duration="683000" />
+      <workItem from="1613985538487" duration="2310000" />
+      <workItem from="1614042463046" duration="4568000" />
+      <workItem from="1614059287520" duration="5971000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Project_Structure" timestamp="1613985407764">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1613985407764" />
+    <state x="290" y="47" key="FileChooserDialogImpl" timestamp="1614065305378">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="290" y="47" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1614065305378" />
+    <state width="1237" height="204" key="GridCell.Tab.0.bottom" timestamp="1614065306930">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1614065306930" />
+    <state width="1237" height="204" key="GridCell.Tab.0.center" timestamp="1614065306930">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1614065306930" />
+    <state width="1237" height="204" key="GridCell.Tab.0.left" timestamp="1614065306930">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1614065306930" />
+    <state width="1237" height="204" key="GridCell.Tab.0.right" timestamp="1614065306930">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1614065306930" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1614065306936">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1614065306936" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1614065306936">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1614065306936" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1614065306930">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1614065306930" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1614065306936">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1614065306936" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1613985487038">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1613985487038" />
+    <state x="362" y="82" width="540" height="524" key="StructurePopup" timestamp="1613984932281">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="362" y="82" width="540" height="524" key="StructurePopup/0.0.1280.680@0.0.1280.680" timestamp="1613984932281" />
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1614042462354">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1614042462354" />
+    <state x="349" y="234" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1613984883284">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="349" y="234" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1613984883284" />
+    <state x="741" y="217" width="538" height="447" key="extract.method.dialog" timestamp="1613985719511">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="741" y="217" width="538" height="447" key="extract.method.dialog/0.0.1280.680@0.0.1280.680" timestamp="1613985719511" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/source/nio-day02/src/com/atguigu/nio/TestPipe.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

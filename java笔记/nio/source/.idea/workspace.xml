@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="05215ba7-57a5-4d64-bcec-598e8d66fe16" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/nio-day01/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nio-day01/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nio-day01/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nio-day01/.settings/org.eclipse.jdt.core_20201128141138.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nio-day01/_20201128141140.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nio-day01/_20201128141140.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nio-day02/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nio-day02/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nio-day02/_20201128141137.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nio-day02/_20201128141138.project" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$USER_HOME$/Documents/SoftwareZip/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="C:\Users\kuen\Documents\SoftwareZip\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1opXWNRLrmRL8Kwh0ZfEH2MhLIx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/nio-day01" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.5213549" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="05215ba7-57a5-4d64-bcec-598e8d66fe16" name="Default Changelist" comment="" />
+      <created>1613984536900</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613984536900</updated>
+      <workItem from="1613984538386" duration="199000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1613984736317">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1613984736317" />
+  </component>
+</project>

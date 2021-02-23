@@ -2,11 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27603167-5929-490a-919a-227051098ea8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../ThreadSourceCode/src/com/juc/Five_线程间定制化通用通信/ThreadOrderAccess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ThreadSourceCode/src/com/juc/four_线程间通信/Lockk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ThreadSourceCode/src/com/juc/four_线程间通信/Synchro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ThreadSourceCode/out/production/ThreadSourceCode/com/kun/DualSync.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ThreadSourceCode/out/production/ThreadSourceCode/com/kun/DualSync.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../nio/source/nio-day01/src/com/atguigu/nio/TestBuffer2021.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/.settings/org.eclipse.jdt.core_20201128141138.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/_20201128141140.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/_20201128141140.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/src/com/atguigu/nio/TestBuffer_20201128141136.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/src/com/atguigu/nio/TestChannel_20201128141140.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/_20201128141137.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/_20201128141138.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestBlockingNIO_20201128141137.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestNIO_2_20201128141143.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestNonBlockingNIO2_20201128141143.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestNonBlockingNIO_20201128141138.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestPipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestPipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestPipe_20201128141138.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +82,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551953006933" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../juc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -301,6 +315,7 @@
       <workItem from="1610378890051" duration="687000" />
       <workItem from="1610550952930" duration="1000000" />
       <workItem from="1610553311874" duration="27000" />
+      <workItem from="1614065308781" duration="142000" />
     </task>
     <servers />
   </component>

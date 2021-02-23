@@ -3,6 +3,7 @@ package com.atguigu.nio;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.Pipe;
+import java.util.Scanner;
 
 import org.junit.Test;
 
@@ -30,5 +31,11 @@ public class TestPipe {
 		sourceChannel.close();
 		sinkChannel.close();
 	}
-	
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		String str = scanner.next();
+		System.out.println(str);
+
+	}
 }
