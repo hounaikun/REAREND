@@ -8,7 +8,10 @@ import org.springframework.cache.Cache;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 
 @Service
@@ -21,6 +24,8 @@ public class DeptService {
     //@Autowired
     RedisCacheManager deptCacheManager;
 
+    @Resource
+    RedisTemplate redisTemplate;
 
     /**
      *  缓存的数据能存入redis；
@@ -49,6 +54,7 @@ public class DeptService {
 //
 //        return department;
 //    }
+
 
 
 }
