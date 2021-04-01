@@ -473,7 +473,7 @@
 	    @Value("#{20-15}")
 	    private Integer age;
 	    //3.可以写${}；取出配置文件中的值{在运行环境变量里面的值}
-	    @Value("${person.nickName}")//很奇怪问什么读取不到？？？待解决
+	    @Value("${person.nickName}")//很奇怪为什么读取不到？？？待解决
 	    private String nickName;
 
 	    public String getNickName() {
