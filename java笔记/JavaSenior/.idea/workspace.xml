@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27603167-5929-490a-919a-227051098ea8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../nio/source/nio-day01/src/com/atguigu/nio/TestBuffer2021.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/.settings/org.eclipse.jdt.core_20201128141138.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/_20201128141140.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/_20201128141140.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/src/com/atguigu/nio/TestBuffer_20201128141136.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day01/src/com/atguigu/nio/TestChannel_20201128141140.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/_20201128141137.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/_20201128141138.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestBlockingNIO_20201128141137.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestNIO_2_20201128141143.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestNonBlockingNIO2_20201128141143.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestNonBlockingNIO_20201128141138.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestPipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestPipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nio/source/nio-day02/src/com/atguigu/nio/TestPipe_20201128141138.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mysql笔记/MySql高级.mmap" beforeDir="false" afterPath="$PROJECT_DIR$/../../mysql笔记/MySql高级.mmap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +39,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>keySet</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -316,6 +293,7 @@
       <workItem from="1610550952930" duration="1000000" />
       <workItem from="1610553311874" duration="27000" />
       <workItem from="1614065308781" duration="142000" />
+      <workItem from="1617699661748" duration="2108000" />
     </task>
     <servers />
   </component>
@@ -327,10 +305,6 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1609668753798" />
-    <state x="488" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606545478193">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="488" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1606545478193" />
     <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1610553335739">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -351,22 +325,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="224" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1610297048126" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1606545665453">
+    <state x="362" y="81" width="558" height="524" key="StructurePopup" timestamp="1617700392813">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1606545665453" />
-    <state x="362" y="81" width="558" height="524" key="StructurePopup" timestamp="1610551482155">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="362" y="81" width="558" height="524" key="StructurePopup/0.0.1280.680@0.0.1280.680" timestamp="1610551482155" />
+    <state x="362" y="81" width="558" height="524" key="StructurePopup/0.0.1280.680@0.0.1280.680" timestamp="1617700392813" />
     <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1610553325571">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1610553325571" />
-    <state x="28" y="36" key="new project wizard" timestamp="1606832275178">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="28" y="36" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1606832275178" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

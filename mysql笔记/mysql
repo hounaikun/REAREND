@@ -1,0 +1,115 @@
+use myemployees;
+
+-- 查看所有系统变量
+show GLOBAL variables;
+-- 查看所有会话变量
+show SESSION variables;
+-- 查看满足条件的系统变量
+show GLOBAL VARIABLES like '%auto%';
+-- 查看满足条件的会话变量
+show Session VARIABLES like '%auto%';
+
+-- 查看指定的系统变量的值
+select @@global.autocommit;
+-- 为某个系统变量赋值
+set GLOBAL autocommit = 0;
+set @@global.autocommit = 1;
+
+-- 查看指定的会话变量的值
+select @@session.autocommit;
+select @@autocommit;
+-- 为某个会话变量赋值
+set SESSION autocommit = 0;
+set @@session.autocommit = 1;
+set @@autocommit = 1;
+
+-- 声明并初始化用户变量
+set @u1=1;
+set @u2:=2;
+select @u3:=3;
+-- 赋值
+set @u4=4;
+set @u4:=4.1;
+select @u4:=4.2;
+select job_id into @u4 from jobs where job_id = 'AC_MGR';
+-- 查看变量的值
+select @u4;
+
+-- 声明局部变量
+begin
+	declare l1 int;
+	declare l2 varchar default 'hello';
+	declare l3 decimal(3,1);
+	-- 赋值局部变量
+	set l1 = 2;
+	set l2 := 'world';
+	select l3 := 2;
+	select min_salary into l1 from jobs where job_id = 'AC_MGR';
+	-- 查看变量的值
+	select l1;
+	select l2;
+	select l3;
+end
+
+-- 存储过程
+delimiter $$
+create procedure sum1()
+begin
+declare l1 int default 1;
+declare l2 int default 2;
+declare l3 int default 0;
+set l1 = 2;
+set l2 := 3;
+set l3 = l1 + l2;
+select l3;
+end$$
+call sum1()$$
+DROP procedure sum1;
+
+delimiter $$
+create procedure sum2(in s1 int, in s2 int)
+begin
+declare sum int default 0;
+set sum := s1 + s2;
+select sum;
+end$$
+call sum2(3,5)$$
+DROP procedure sum2;
+
+delimiter $$
+create procedure sum3(in str1 varchar(10), in str2 varchar(10), out str3 varchar(20))
+begin
+declare dstr3 varchar(20);
+set dstr3 = CONCAT(str1,str2);
+set str3 := dstr3;
+end$$
+set @str3 = ''$$
+call sum3('hello',' world',@str3)$$
+select @str3$$
+drop procedure sum3;
+
+-- 查看存储过程
+show create procedure sum3;
+-- 删除存储过程
+drop procedure sum1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
