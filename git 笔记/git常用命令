@@ -1,0 +1,4 @@
+查看本地和远程的跟踪关系
+git branch -vv
+修改远程跟踪分支
+git branch --set-upstream-to=origin/remoteBranchName localBranchName
