@@ -3567,6 +3567,18 @@ schema-*.sql、data-*.sql
 
 ## 2、整合Druid数据源
 
+```xml
+<druid-spring-boot-starter.version>1.2.6</druid-spring-boot-starter.version>
+
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>druid-spring-boot-starter</artifactId>
+    <version>${druid-spring-boot-starter.version}</version>
+</dependency>
+```
+
+
+
 ```java
 导入druid数据源
 @Configuration
@@ -3620,7 +3632,7 @@ public class DruidConfig {
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>1.3.1</version>
+			<version>2.1.3</version>
 		</dependency>
 ```
 
@@ -3698,6 +3710,110 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml 指定全局配置文件的位置
   mapper-locations: classpath:mybatis/mapper/*.xml  指定sql映射文件的位置
 ```
+
+```properties
+###### 连接池配置
+# 配置初始化大小、最小、最大
+spring.datasource.druid.initial-size=10
+spring.datasource.druid.max-active=100
+spring.datasource.druid.min-idle=20
+# 配置获取连接等待超时的时间
+spring.datasource.druid.max-wait=60000
+#配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+spring.datasource.druid.time-between-eviction-runs-millis=60000
+#配置一个连接在池中最小生存的时间，单位是毫秒
+spring.datasource.druid.min-evictable-idle-time-millis=300000
+#配置验证数据库连接的查询语句
+spring.datasource.druid.validation-query=SELECT 1 FROM DUAL
+spring.datasource.druid.test-while-idle=true
+spring.datasource.druid.test-on-borrow=false
+spring.datasource.druid.test-on-return=false
+#打开PSCache，并且指定每个连接上PSCache的大小
+spring.datasource.druid.pool-prepared-statements=false
+#指定最大的打开的prepared statements数量
+spring.datasource.druid.max-pool-prepared-statement-per-connection-size=0
+#spring.datasource.druid.max-open-prepared-statements= #等价于上面的max-pool-prepared-statement-per-connection-size
+#连接池中的minIdle数据以内的连接，空闲时间超过minEvictableIdleTimeMillis，则会执行keepAlive操作。default=false
+spring.datasource.druid.keep-alive=true
+#指定连接校验查询的超时时间
+spring.datasource.druid.validation-query-timeout=60000
+#配置监控统计拦截的filter -- 去掉后监控界面sql无法统计，'wall'用于防火墙(默认值stat，配置多个英文逗号分隔)
+spring.datasource.druid.filters=stat,wall
+###### 配置StatFilter
+spring.datasource.druid.filter.stat.enabled=true
+spring.datasource.druid.filter.stat.db-type=mysql
+#打开慢SQL
+spring.datasource.druid.filter.stat.log-slow-sql=true
+#配置SQL慢的标准(缺省值为3000)
+spring.datasource.druid.filter.stat.slow-sql-millis=10000
+#配置StatFilter的mergeSql属性
+spring.datasource.druid.filter.stat.merge-sql=true
+###### 配置WallFilter(防御SQL注入攻击)
+spring.datasource.druid.filter.wall.enabled=true
+spring.datasource.druid.filter.wall.db-type=mysql
+#是否允许执行SELECT * FROM T这样的语句
+spring.datasource.druid.filter.wall.config.select-all-column-allow=false
+#是否允许删除表
+spring.datasource.druid.filter.wall.config.drop-table-allow=false
+#是否允许创建表
+spring.datasource.druid.filter.wall.config.create-table-allow=true
+#是否允许执行Alter Table语句
+spring.datasource.druid.filter.wall.config.alter-table-allow=false
+#truncate语句是危险，缺省打开，若需要自行关闭
+spring.datasource.druid.filter.wall.config.truncate-allow=false
+###### Druid监控配置
+#配置WebStatFilter(WebStatFilter用于采集web-jdbc关联监控的数据)
+spring.datasource.druid.web-stat-filter.enabled=true
+spring.datasource.druid.web-stat-filter.url-pattern=/*
+#排除一些不必要的url
+spring.datasource.druid.web-stat-filter.exclusions=*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*
+#配置session统计功能
+spring.datasource.druid.web-stat-filter.session-stat-enable=false
+#缺省sessionStatMaxCount是1000个
+spring.datasource.druid.web-stat-filter.session-stat-max-count=1000
+#配置principalSessionName，使得druid能够知道当前的session的用户是谁 (xxx.user修改为你user信息保存在session中的sessionName)
+#spring.datasource.druid.web-stat-filter.principal-session-name=xxx.user
+#配置principalCookieName，使得druid知道当前的user是谁(xxx.user修改为你user信息保存在cookie中的cookieName)
+#spring.datasource.druid.web-stat-filter.principal-cookie-name=xxx.user
+#配置profileEnable能够监控单个url调用的sql列表
+spring.datasource.druid.web-stat-filter.profile-enable=true
+###### StatViewServlet配置
+#是否启用StatViewServlet默认值true
+spring.datasource.druid.stat-view-servlet.enabled=true
+spring.datasource.druid.stat-view-servlet.url-pattern=/druid/*
+#允许清空统计数据
+spring.datasource.druid.stat-view-servlet.reset-enable=true
+#用户名/密码
+spring.datasource.druid.stat-view-servlet.login-username=druid
+spring.datasource.druid.stat-view-servlet.login-password=druid
+#StatViewSerlvet展示出来的监控信息比较敏感，是系统运行的内部情况，如果你需要做访问控制，可以配置allow和deny这两个参数
+#判断规则: deny优先于allow
+#24表示，前面24位是子网掩码
+#spring.datasource.druid.stat-view-servlet.allow=128.242.127.1/24,128.242.128.1
+#spring.datasource.druid.stat-view-servlet.deny=128.242.128.4
+###### 配置_Druid和Spring关联监控配置
+#spring.datasource.druid.aop-patterns= #Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
+#如果spring.datasource.druid.aop-patterns要代理的类没有定义interface请设置spring.aop.proxy-target-class=true
+##############################Mybatis配置(xml)##########################################################
+###MyBatis xml config file (optional)
+#mybatis.config-location==classpath:mybatis/mybatis-config.xml
+###Mapper xml config files (optional)
+mybatis.mapper-locations=classpath:dao/*.xml
+###Package to search for type aliases (optional)
+mybatis.type-aliases-package=com.gaiaworks.multiLanguage.entity
+###Packages to search for type handlers (optional)
+#mybatis.type-handlers-package=com.example.typehandler
+######
+#mybatis.configuration.map-underscore-to-camel-case=true
+#mybatis.configuration.default-fetch-size=100
+#mybatis.configuration.default-statement-timeout=30
+###mapper
+###mappers 多个接口时逗号隔开
+mapper.not-empty=false
+mapper.identity=MYSQL
+```
+
+
 
 更多使用参照
 
